@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" >
     <topbar></topbar>
   </div>
 </template>
@@ -8,15 +8,26 @@
 import topbar  from './components/topbar'
 export default {
   name: 'App',
+  data(){
+    return {
+
+    }
+  },
   components:{
     topbar
+  },
+  created:function(){
+
+  },
+  methods:{
+
   }
 }
 </script>
 
 <style>
    body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td { margin:0; padding:0; }
-    body { background:#fff; color:#555; font-size:14px; font-family: Verdana, Arial, Helvetica, sans-serif; }
+    body { background:#fff; color:#555; font-size:14px; font-family: Verdana, Arial, Helvetica, sans-serif;height:100%;overflow:hidden; }
     td,th,caption { font-size:14px; }
     h1, h2, h3, h4, h5, h6 { font-weight:normal; font-size:100%; }
     address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal;}
@@ -27,6 +38,7 @@ export default {
     input, textarea, select, button { font:14px Verdana,Helvetica,Arial,sans-serif; }
     table { border-collapse:collapse; }
     html {overflow-y: scroll;font-size:20px;}
+    #app{width:100%;height:100%; position:absolute;overflow-x:hidden;overflow-y:auto;}
 
     .clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}
     .clearfix { *zoom:1; }
