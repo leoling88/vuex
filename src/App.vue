@@ -1,16 +1,16 @@
 <template>
   <div id="app" >
-    <div class="vuc-wrap">
-    
-<!--         <topbar></topbar>
- -->    
+    <div class="vc-wrap">
+      <leftbar></leftbar>
+
     </div>
 
   </div>
 </template>
 
 <script>
-import topbar  from './components/topbar'
+import topbar  from './components/topbar';
+import leftbar  from './components/leftbar'
 export default {
   name: 'App',
   data(){
@@ -19,7 +19,9 @@ export default {
     }
   },
   components:{
-    topbar
+    topbar,
+    leftbar
+
   },
   created:function(){
 
@@ -44,7 +46,7 @@ export default {
     table { border-collapse:collapse; }
     html {overflow-y: scroll;font-size:20px;}
     #app{width:100%;height:100%; position:absolute;overflow-x:hidden;overflow-y:auto;}
-    .vuc-wrap{width:100%;height:100%;position:relative;top:0;left:0;background: #ccc}
+    .vc-wrap{width:100%;height:100%;position:relative;top:0;left:0;background: #ccc}
 
     .clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}
     .clearfix { *zoom:1; }
