@@ -35,7 +35,7 @@ const state = {
 					o_name:'数据字典',
 					o_id:'B03'
 
-				},								
+				}								
 			],
 			isShow: false
 		}
@@ -61,15 +61,14 @@ clickMenu({commit},index){
 const mutations = {
 	//点击事件高亮
 	menuShow(state, index){
+		console.log(state.menu_list[index].name)
 		state.menu_list.forEach((n, i) => {
-			
-			if(n.index == index.index){
-				console.log(n.index +'---'+ i)
-
+			if(i == index){
+				state.menu_list[i].isShow = state.menu_list[i].isShow == false ? true : false 
+			}else{
+				state.menu_list[i].isShow = false
 			}
-
 		})
-
 
 	}
 }
