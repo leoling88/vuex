@@ -1,5 +1,5 @@
 <template>
-	<div class="leftbar animation-left-in">
+	<div class="leftbar"> <!-- animation-left-in-->
 		<div class="title">公众受理平台</div>
 		<div>
 			<ul class="ul-1 li-item">
@@ -42,7 +42,7 @@
 	}
 </script>
 <style scoped>
-.leftbar{position:absolute;top:0;left:0;width:10rem;height:100%;color:#fff;background:#444;z-index:2;transform:translateX(-10rem);-webkit-transform:translateX(-10rem)}
+.leftbar{position:absolute;top:0;left:0;width:10rem;height:100%;color:#fff;background:#444;z-index:2;/*transform:translateX(-10rem);-webkit-transform:translateX(-10rem)*/}
 .leftbar .title{padding:.5rem;font-size:.8rem;color:#fff;background:#333;}
 .ul-1>li{border-bottom:1px solid #555;}
 .ul-1 .t {position: relative;padding:.5rem .5rem .5rem 1rem;}
