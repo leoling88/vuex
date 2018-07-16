@@ -29,6 +29,6 @@
 
 
 .top-bar-1{width:100%;height:2.5rem;background:#333;text-align:center; position:relative;}
-.top-bar-1 .menu{display:block;width:2.5rem;height:2.5rem;position: absolute;top:0;left:0;background:url('/static/img/menu-icon.png') center center no-repeat ; background-size:1.8rem auto;}
+.top-bar-1 .menu{display:block;width:2.5rem;height:2.5rem;position: absolute;top:0;left:0;background:url('/test/dist/static/img/menu-icon.png') center center no-repeat ; background-size:1.8rem auto;}
 .top-bar-1 h1{line-height:2.5rem;color:#fff;}
 </style>
