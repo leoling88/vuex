@@ -2,6 +2,7 @@
   <div id="app" >
     <div class="vc-wrap">
       <leftbar></leftbar>
+      <contentview></contentview>
 
     </div>
 
@@ -9,7 +10,7 @@
 </template>
 
 <script>
-import topbar  from './components/topbar';
+import contentview  from './components/contentview';
 import leftbar  from './components/leftbar'
 export default {
   name: 'App',
@@ -19,7 +20,7 @@ export default {
     }
   },
   components:{
-    topbar,
+    contentview,
     leftbar
 
   },
@@ -39,7 +40,7 @@ export default {
     h1, h2, h3, h4, h5, h6 { font-weight:normal; font-size:100%; }
     address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal;}
     a { color:#555; text-decoration:none; }
-    a:hover { text-decoration:underline; }
+    a:hover { text-decoration:none; }
     img { border:none; }
     ol,ul,li { list-style:none; }
     input, textarea, select, button { font:14px Verdana,Helvetica,Arial,sans-serif; }
