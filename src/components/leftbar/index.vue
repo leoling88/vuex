@@ -1,5 +1,5 @@
 <template>
-	<div class="leftbar"> <!-- animation-left-in-->
+	<div class="leftbar" style="transform: translate3d(0, 0, 0);"> <!-- animation-left-in-->
 		<div class="title">公众受理平台</div>
 		<div>
 			<ul class="ul-1 li-item">
@@ -31,7 +31,7 @@
 		created:function(){
 		},		
 		computed:{
-			...mapGetters(['menulist'])
+			...mapGetters(['menulist','leftbaron'])
 
 
 		},
@@ -42,29 +42,15 @@
 	}
 </script>
 <style scoped>
-.leftbar{position:absolute;top:0;left:0;width:10rem;height:100%;color:#fff;background:#444;z-index:2;transform:translateX(-10rem);-webkit-transform:translateX(-10rem);-moz-transform:translateX(-10rem);}
+.leftbar{position:absolute;top:0;left:0;width:10rem;height:100%;color:#fff;background:#444;    transition: transform .38s ease-in-out,visibility .38s,-webkit-transform .38s ease-in-out;}
 .leftbar .title{padding:.5rem;font-size:.8rem;color:#fff;background:#333;}
+
 .ul-1>li{border-bottom:1px solid #555;}
 .ul-1 .t {position: relative;padding:.5rem .5rem .5rem 1rem; cursor:pointer;}
 .ul-1 .t i{position:absolute;top:.7rem;right:.5rem;}
 .ul-2>li{margin:0 1rem;padding:.5rem .5rem .5rem 1rem;border-bottom:1px dotted #555;}
 .ul-2>li:last-child,.ul-1>li:last-child{border:none;}
 .ul-2>li a{color:#fff;}
-.animation-left-in{
-	-webkit-animation:fadeInLeft 1s .2s ease both;
-	-moz-animation:fadeInLeft 1s .2s ease both;}
-	@-webkit-keyframes fadeInLeft{
-	0%{opacity:1;
-	-webkit-transform:translateX(-10rem)}
-	100%{opacity:1;
-	-webkit-transform:translateX(0)}
-	}
-	@-moz-keyframes fadeInLeft{
-	0%{opacity:1;
-	-moz-transform:translateX(-10rem)}
-	100%{opacity:1;
-	-moz-transform:translateX(0)}
-}
 
 .demoSpan1{    transform-origin:center center;
     transform: rotate(0deg); 

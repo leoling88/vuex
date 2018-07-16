@@ -39,23 +39,24 @@ const state = {
 			],
 			isShow: false
 		}
-
-
-		
-	]
+	],
+	leftbarOn:false
 }
 //getters 抛出数据
 const getters = {
 	//导航菜单
 	menulist:state => state.menu_list,
-
+	leftbaron:state => state.leftbarOn
 
 }
 const actions  = {
-//菜单点击事
-clickMenu({commit},index){
-	commit('menuShow', index)
-}
+	//菜单点击事
+	clickMenu({commit},index){
+		commit('menuShow', index)
+	},
+	clickMenuShow({commit}){
+		commit('leftbarShow')
+	}
 
 }
 const mutations = {
@@ -70,6 +71,14 @@ const mutations = {
 			}
 		})
 
+	},
+	leftbarShow(){
+		if(!state.leftbarOn){
+			state.leftbarOn = true
+		}else{
+			state.leftbarOn = false
+
+		}
 	}
 }
 export default{
