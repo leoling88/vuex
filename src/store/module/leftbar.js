@@ -40,13 +40,19 @@ const state = {
 			isShow: false
 		}
 	],
-	leftbarOn:false
+	leftmenu_show:{
+		leftbarOn:false,
+		xValueR:0,
+		xValueL:'-200'
+
+
+	}
 }
 //getters 抛出数据
 const getters = {
 	//导航菜单
 	menulist:state => state.menu_list,
-	leftbaron:state => state.leftbarOn
+	leftbaron:state => state.leftmenu_show
 
 }
 const actions  = {
@@ -73,10 +79,14 @@ const mutations = {
 
 	},
 	leftbarShow(){
-		if(!state.leftbarOn){
-			state.leftbarOn = true
+		if(!state.leftmenu_show.leftbarOn){
+			state.leftmenu_show.leftbarOn = true
+			state.leftmenu_show.xValueR = 200
+			state.leftmenu_show.xValueL = 0
 		}else{
-			state.leftbarOn = false
+			state.leftmenu_show.leftbarOn = false
+			state.leftmenu_show.xValueR = 0
+			state.leftmenu_show.xValueL = -200
 
 		}
 	}

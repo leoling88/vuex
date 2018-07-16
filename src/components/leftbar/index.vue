@@ -1,5 +1,5 @@
 <template>
-	<div class="leftbar" style="transform: translate3d(0, 0, 0);"> <!-- animation-left-in-->
+	<div class="leftbar" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueL +'px, 0, 0)'}"> <!-- animation-left-in-->
 		<div class="title">公众受理平台</div>
 		<div>
 			<ul class="ul-1 li-item">
@@ -42,7 +42,7 @@
 	}
 </script>
 <style scoped>
-.leftbar{position:absolute;top:0;left:0;width:10rem;height:100%;color:#fff;background:#444;    transition: transform .38s ease-in-out,visibility .38s,-webkit-transform .38s ease-in-out;}
+.leftbar{position:absolute;top:0;left:0;width:10rem;height:100%;color:#fff;background:#444;    transition: transform .38s ease-in-out,visibility .38s,-webkit-transform .38s ease-in-out;z-index:1000;}
 .leftbar .title{padding:.5rem;font-size:.8rem;color:#fff;background:#333;}
 
 .ul-1>li{border-bottom:1px solid #555;}

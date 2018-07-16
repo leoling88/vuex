@@ -2,7 +2,7 @@
   <div id="app" >
     <div class="vc-wrap">
       <leftbar></leftbar>
-      <!--<contentview></contentview>-->
+      <contentview></contentview>
 
     </div>
 
