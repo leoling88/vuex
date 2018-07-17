@@ -1,17 +1,17 @@
 <template>
   <div id="app" >
     <div class="vc-wrap">
-      <leftbar></leftbar>
-      <contentview></contentview>
-
+      
+      <router-view></router-view>
+<!--       <contentview></contentview>
+ -->
     </div>
 
   </div>
 </template>
 
 <script>
-import contentview  from './components/contentview';
-import leftbar  from './components/leftbar'
+//import contentview  from './components/contentview';
 export default {
   name: 'App',
   data(){
@@ -20,8 +20,8 @@ export default {
     }
   },
   components:{
-    contentview,
-    leftbar
+    //contentview,
+    // leftbar
 
   },
   created:function(){

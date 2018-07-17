@@ -1,15 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-
+import contentview from '@/components/contentview'
+import listview from '@/components/listview'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'contentview',
+      component: contentview
+    },
+    {
+      path: '/list',
+      component: listview
     }
   ]
 })

@@ -7,7 +7,7 @@
 					<p class="t"  v-bind:class="{ active: item.isShow }"  @click="clickMenu(index)" ><strong v-text="item.name"></strong><i class="demoSpan1"></i></p>
 					<ol class="ul-2" v-show="item.isShow">
 						<li v-for="oitem in item.content">
-							<a href=""><strong v-text="oitem.o_name"></strong></a>
+							<router-link to="/list"><strong v-text="oitem.o_name"></strong></router-link>
 						</li>
 					</ol>
 

@@ -12,7 +12,7 @@
 
 </template>
 <script>
-	import {mapGetters, mapActions} from 'vuex';
+	import {mapGetters, mapState} from 'vuex';
 	export default{
 		name: 'topbar',
 		data(){
@@ -27,9 +27,7 @@
 		},
 		methods:{
 			//...mapActions(['viewHight']),
-			ClickLeftMenu() {
-				alert()
-			}
+
 		}
 	}
 </script>
