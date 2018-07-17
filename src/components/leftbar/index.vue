@@ -43,7 +43,7 @@
 </script>
 <style scoped>
 .leftbar{position:absolute;top:0;left:0;width:10rem;height:100%;color:#fff;background:#444;    transition: transform .38s ease-in-out,visibility .38s,-webkit-transform .38s ease-in-out;z-index:1000;}
-.leftbar .title{padding:.5rem;font-size:.8rem;color:#fff;background:#333;}
+.leftbar .title{height:2.5rem; padding:0 .5rem;font-size:.8rem;color:#fff;line-height:2.5rem;background:#333;}
 
 .ul-1>li{border-bottom:1px solid #555;}
 .ul-1 .t {position: relative;padding:.5rem .5rem .5rem 1rem; cursor:pointer;}
