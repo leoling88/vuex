@@ -20,8 +20,7 @@
 		created:function(){
 		},		
 		computed:{
-			...mapGetters(['lists'])
-
+			...mapGetters(['lists','getMineBaseMsg'])
 		},
 		methods:{
 		}
@@ -37,7 +36,7 @@
 .lists-1 li.style-1 .title h2{width:100%;}
 .lists-1 li.style-1 .text{display:block;padding-left:4.5rem;font-size:.6rem;color:#ccc;}
 .lists-1 li.style-2 {}
-.lists-1 li.style-2 .img{display: block;height:4rem;margin:.5rem 0;text-align:center;}
+.lists-1 li.style-2 .img{display: block;min-height:4rem;margin:.5rem 0 .3rem;text-align:center;}
 .lists-1 li.style-2 .img img{width:33%;height:100%;margin-right:.5%;}
 .lists-1 li.style-2 .img img:last-child{margin:0;}
 .lists-1 li.style-2 .title{display:block;width:100%;font-size:.7rem;color:#000;}

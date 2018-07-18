@@ -28,10 +28,11 @@
 			}
 
 		},
-		created:function(){
-		},		
+		created() {
+		  this.$store.dispatch('getMineBaseMsg');
+		 },		
 		computed:{
-			...mapGetters(['menulist','leftbaron'])
+			...mapGetters(['menulist','leftbaron','getMineBaseMsg'])
 
 
 		},

@@ -5,10 +5,12 @@ import Vuex from 'vuex'
 import App from './App'
 import router from './router'
 import VueRouter from 'vue-router'
-import store from './store'
+import store from './vuex/store'
+//import axios from 'axios'
 // 告诉 vue 使用这个 router(路由)
 Vue.use(VueRouter)
 Vue.use(Vuex)
+//Vue.prototype.$ajax = axios
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
