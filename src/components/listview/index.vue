@@ -1,7 +1,7 @@
 <template>
 	<div class="lists-1">
 		<ul>
-			<li class="li-1" v-for="item in lists" v-bind:class="{'style-1':item.imgnum === '1','style-2':item.imgnum === '3'}">
+			<li class="li-1" v-for="item in listshot" v-bind:class="{'style-1':item.otype === '1','style-2':item.otype === '3'}">
 				<span class="title"><h2 v-text="item.name"></h2></span>
 				<span class="img"><img :src="_item" alt="" v-for="_item in item.img"></span>
 				<span class="text" v-text="item.title"></span>
@@ -20,7 +20,7 @@
 		created:function(){
 		},		
 		computed:{
-			...mapGetters(['lists','getMineBaseMsg'])
+			...mapGetters(['getMineBaseMsg'])
 		},
 		methods:{
 		}
