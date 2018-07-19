@@ -33,7 +33,7 @@
 		created:function(){
 		},		
 		computed:{
-			...mapGetters(['leftbaron'])
+			...mapGetters(['leftbaron','NewsHot'])
 
 		},
 		methods:{

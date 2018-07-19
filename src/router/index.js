@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import contentview from '@/page/home'
-import listhot from '@/components/listhot'
+import home from '@/pages/home'
+import listhot from '@/pages/listhot'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'contentview',
-      component: contentview
+      name: 'home',
+      component: home
     },
     {
       path: '/listhot',

@@ -20,13 +20,7 @@
 		data () {
 			return {}
 		}
-		// created:function(){
-		// },		
-		// computed:{
-		// 	...mapGetters(['NewsHome'])
-		// },
-		// methods:{
-		// }
+
 	}
 
 </script>

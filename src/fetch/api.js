@@ -1,6 +1,11 @@
 import axios from 'axios'
 
 
+const state = {
+
+    travelsList: [],
+
+}
 
 export function fetch(url, params) {
 	return new Promise((resolve, reject) =>  {
@@ -19,6 +24,7 @@ export function fetch(url, params) {
 export default {
 	/*获取新闻首页列表 */
 	NewsHot(params) {
+		alert();
 		console.log('进入api.js')
 		return fetch('static/goods.json')
 	}

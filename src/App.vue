@@ -10,6 +10,7 @@
 </template>
 <script>
 //import contentview  from './components/contentview';
+import { mapGetters, mapAcitons } from 'vuex'
 export default {
   name: 'App',
   data(){
@@ -27,6 +28,9 @@ export default {
   },
   methods:{
 
+  },
+  computed: {
+   // ...mapGetters(['NewsHot'])
   }
 }
 </script>

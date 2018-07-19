@@ -9,6 +9,6 @@ export default new Vuex.Store({
 		topbar,
 		mine
 
-	},
-	strict: process.env.NODE_ENV !== 'production'
+	}
+	//strict: process.env.NODE_ENV !== 'production'
 })

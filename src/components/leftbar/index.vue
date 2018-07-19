@@ -29,10 +29,9 @@
 
 		},
 		created() {
-		  this.$store.dispatch('getMineBaseMsg');
 		 },		
 		computed:{
-			...mapGetters(['menulist','leftbaron','getMineBaseMsg'])
+			...mapGetters(['menulist','leftbaron'])
 
 
 		},
