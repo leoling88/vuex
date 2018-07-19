@@ -1,7 +1,6 @@
 <template>
   <div id="app" >
     <div class="vc-wrap">
-      
       <router-view></router-view>
 <!--       <contentview></contentview>
  -->
@@ -9,7 +8,6 @@
 
   </div>
 </template>
-
 <script>
 //import contentview  from './components/contentview';
 export default {

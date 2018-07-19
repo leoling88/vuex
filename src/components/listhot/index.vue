@@ -1,29 +1,32 @@
 <template>
 	<div class="lists-1">
-		<ul>
-			<li class="li-1" v-for="item in listshot" v-bind:class="{'style-1':item.otype === '1','style-2':item.otype === '3'}">
-				<span class="title"><h2 v-text="item.name"></h2></span>
-				<span class="img"><img :src="_item" alt="" v-for="_item in item.img"></span>
-				<span class="text" v-text="item.title"></span>
-			</li>
-		</ul>
+		<rouer-link :to="{ path: '/listhost/'+ listshot.objectId }">
+			<span class="title"><h2 v-text="listshot.name"></h2></span>
+			<span class="img"><img :src="_item" alt="" v-for="_item in listshot.img"></span>
+			<span class="text" v-text="listshot.title"></span>
+		</rouer-link>
+<!-- 			<li class="li-1" v-for="item in listshot" v-bind:class="{'style-1':item.otype === '1','style-2':item.otype === '3'}"> -->
+
 	</div>
 
 </template>
 <script>
 	import {mapGetters, mapActions} from 'vuex'
+
 	export default{
-		name: 'listview',
+		prost:{
+			listshot: Object
+		},
 		data () {
 			return {}
-		},
-		created:function(){
-		},		
-		computed:{
-			...mapGetters(['getMineBaseMsg'])
-		},
-		methods:{
 		}
+		// created:function(){
+		// },		
+		// computed:{
+		// 	...mapGetters(['NewsHome'])
+		// },
+		// methods:{
+		// }
 	}
 
 </script>

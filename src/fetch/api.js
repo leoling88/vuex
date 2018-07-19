@@ -1,4 +1,7 @@
 import axios from 'axios'
+
+
+
 export function fetch(url, params) {
 	return new Promise((resolve, reject) =>  {
 		axios.get(url, params)
@@ -14,8 +17,8 @@ export function fetch(url, params) {
 }
 
 export default {
-	//获取后台数据 
-	mineBaseMsgApi() {
+	/*获取新闻首页列表 */
+	NewsHot(params) {
 		console.log('进入api.js')
 		return fetch('static/goods.json')
 	}

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import contentview from '@/components/contentview'
-import listview from '@/components/listview'
+import contentview from '@/page/home'
+import listhot from '@/components/listhot'
 Vue.use(Router)
 
 export default new Router({
@@ -12,8 +12,9 @@ export default new Router({
       component: contentview
     },
     {
-      path: '/list',
-      component: listview
+      path: '/listhot',
+      name: 'listhot',
+      component: listhot
     }
   ]
 })
