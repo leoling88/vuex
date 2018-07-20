@@ -1,15 +1,14 @@
 <template>
   <div id="app" >
     <div class="vc-wrap">
-      <router-view></router-view>
-<!--       <contentview></contentview>
- -->
+      <v-header></v-header>
+
     </div>
 
   </div>
 </template>
 <script>
-//import contentview  from './components/contentview';
+import header from '@/components/header'
 import { mapGetters, mapAcitons } from 'vuex'
 export default {
   name: 'App',
@@ -19,8 +18,7 @@ export default {
     }
   },
   components:{
-    //contentview,
-    // leftbar
+    'v-header': header
 
   },
   created:function(){
@@ -30,7 +28,6 @@ export default {
 
   },
   computed: {
-   // ...mapGetters(['NewsHot'])
   }
 }
 </script>
@@ -53,6 +50,9 @@ export default {
 
     .clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}
     .clearfix { *zoom:1; }
+    .left-0{left:0;}
+    .top-0{top:0;}
+    .right-0{right:0;}
 
 
 
