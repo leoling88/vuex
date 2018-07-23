@@ -17,7 +17,6 @@
 </template>
 <script>
 	
-
 	import {mapGetters, mapActions} from 'vuex'
 	import leftbar  from '@/components/leftbar'
 	export default{
@@ -33,11 +32,9 @@
 		created:function(){
 		},		
 		computed:{
-			...mapGetters(['leftbaron','NewsHot'])
 
 		},
 		methods:{
-			...mapActions(['clickMenuShow'])
 		}
 	}
 </script>

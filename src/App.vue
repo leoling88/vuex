@@ -1,7 +1,7 @@
 <template>
   <div id="app" >
     <div class="vc-wrap">
-      <v-header></v-header>
+      <v-header :title="title" :menu-display="menuDisplay" :back-display="backDisplay" ></v-header>
 
     </div>
 
@@ -21,6 +21,9 @@ export default {
     'v-header': header
 
   },
+  watch:{
+  
+  },
   created:function(){
 
   },
@@ -28,6 +31,10 @@ export default {
 
   },
   computed: {
+    title () {
+      return "ccc"
+    }
+
   }
 }
 </script>
