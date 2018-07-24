@@ -2,7 +2,7 @@
 	<div class="header">
 		<div class="menu left-0 top-0" v-show="menuDisplay" @click="barShow">菜单</div>
 		<div class="menu left-0 top-0" v-show="backDisplay" @click="goBack">返回</div>
-		<div class="text"><h1>{ title }</h1></div>
+		<div class="text"><h1>{{title}}</h1></div>
 		<div class="menu right-0 top-0"></div>
 	</div>
 </template>

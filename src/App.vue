@@ -1,7 +1,7 @@
 <template>
   <div id="app" >
     <div class="vc-wrap">
-      <v-header :title="title" :menu-display="menuDisplay" :back-display="backDisplay" ></v-header>
+      <v-header :title="title" :menu-display="menuDisplay"></v-header>
 
     </div>
 
@@ -14,15 +14,11 @@ export default {
   name: 'App',
   data(){
     return {
-
     }
   },
   components:{
     'v-header': header
 
-  },
-  watch:{
-  
   },
   created:function(){
 
@@ -31,8 +27,18 @@ export default {
 
   },
   computed: {
+
     title () {
-      return "ccc"
+      switch (this.$route.path.split('/')[1]){
+        case '':
+          return "VC-UI"
+      }
+    },
+    menuDisplay () {
+      if (this.$route.path.split('/')[1] == "home") {
+        return true
+
+      }
     }
 
   }
