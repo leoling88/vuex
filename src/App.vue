@@ -1,7 +1,12 @@
 <template>
   <div id="app" >
     <div class="vc-wrap">
-      <v-header :title="title" :menu-display="menuDisplay"></v-header>
+      
+      <v-leftbar></v-leftbar>
+      <div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
+        <v-header :title="title" :menu-display="menuDisplay"></v-header>
+DDDDDDDDDDDDDDDDF
+      </div>
 
     </div>
 
@@ -9,6 +14,7 @@
 </template>
 <script>
 import header from '@/components/header'
+import leftbar from '@/components/leftbar'
 import { mapGetters, mapAcitons } from 'vuex'
 export default {
   name: 'App',
@@ -17,17 +23,18 @@ export default {
     }
   },
   components:{
-    'v-header': header
+    'v-header': header,
+    'v-leftbar': leftbar
 
   },
   created:function(){
 
   },
   methods:{
-
+   // ...mapGetters(['leftbaron'])
   },
   computed: {
-
+    ...mapGetters(['leftbaron']),
     title () {
       switch (this.$route.path.split('/')[1]){
         case '':
@@ -37,7 +44,6 @@ export default {
     menuDisplay () {
       if (this.$route.path.split('/')[1] == "home") {
         return true
-
       }
     }
 
@@ -67,7 +73,7 @@ export default {
     .top-0{top:0;}
     .right-0{right:0;}
 
-
+.content-box{position: absolute;width:100%;height:100%;overflow:hidden;  transition: transform .38s ease-in-out,visibility .38s,-webkit-transform .38s ease-in-out;background:#fff;z-index:1001;}
 
     
 </style>

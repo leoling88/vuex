@@ -32,8 +32,6 @@
 		 },		
 		computed:{
 			...mapGetters(['menulist','leftbaron'])
-
-
 		},
 		methods:{
 			...mapActions(['clickMenu'])
