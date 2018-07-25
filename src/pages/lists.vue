@@ -1,37 +1,23 @@
 <template>
-	<div class="travel-list">
-        <listhot v-for="(item,index) in listshot" :travel="item" ></listhot>
+	<div >
+        <v-listshot></v-listshot>
 	</div>
 </template>
 <script>
-
-import { mapGetters } from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 import listhot from  '@/components/listhot'
 export default {
-    props: {
-        listshot: Array
-    },
-    components: {
-        listhot
-    },
+    name: 'lists',
     data() {
         return {
 
         }
     },
-    created() {
-
-
+    components: {
+      'v-listshot': listhot
     },
-    computed: {
-        ...mapGetters(['listshot'])
-
-    },
-    mounted(){
-        
-    },
-    methods: {
-        
+    computed:{
+       // ...mapGetters(['listshot'])         
     }
 }
 

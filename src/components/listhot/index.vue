@@ -1,11 +1,13 @@
 <template>
 	<div class="lists-1">
-		<rouer-link :to="{ path: '/sport/'+ listshot.objectId }">
+	<ul>
+		<li class="li-1" v-for="item in listshot" v-bind:class="{'style-1':item.otype === '1','style-2':item.otype === '3'}">
 			<span class="title"><h2 v-text="item.name"></h2></span>
-			<span class="img"><img :src="_item" alt="" v-for="_item in listshot.img"></span>
-			<span class="text" v-text="listshot.title"></span>
-		</rouer-link>
-<!-- 			<li class="li-1" v-for="item in listshot" v-bind:class="{'style-1':item.otype === '1','style-2':item.otype === '3'}"> -->
+			<span class="img"><img :src="_item" alt="" v-for="_item in item.img"></span>
+			<span class="text" v-text="item.title"></span>
+		</li>
+
+	</ul>
 
 	</div>
 
@@ -14,12 +16,16 @@
 	import {mapGetters, mapActions} from 'vuex'
 
 	export default{
+		name:'listhot',
 		prost:{
-			sport: Object
+			listshot: Array
 		},
 		data () {
 			return {}
-		}
+		},
+	    computed:{
+	        ...mapGetters(['listshot'])         
+	    }
 
 	}
 
