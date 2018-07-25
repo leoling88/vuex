@@ -1,7 +1,7 @@
 <template>
 	<div class="lists-1">
-		<rouer-link :to="{ path: '/listhost/'+ listshot.objectId }">
-			<span class="title"><h2 v-text="listshot.name"></h2></span>
+		<rouer-link :to="{ path: '/sport/'+ listshot.objectId }">
+			<span class="title"><h2 v-text="item.name"></h2></span>
 			<span class="img"><img :src="_item" alt="" v-for="_item in listshot.img"></span>
 			<span class="text" v-text="listshot.title"></span>
 		</rouer-link>
@@ -15,7 +15,7 @@
 
 	export default{
 		prost:{
-			listshot: Object
+			sport: Object
 		},
 		data () {
 			return {}

@@ -1,20 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/pages/home'
-import listhot from '@/pages/listhot'
+import lists from '@/pages/lists'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: home
     },
     {
-      path: '/listhot',
-      name: 'listhot',
-      component: listhot
+      path: '/lists',
+      name: 'lists',
+      component: lists
     }
   ]
 })
