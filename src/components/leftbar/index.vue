@@ -6,8 +6,8 @@
 				<li v-for="(item, index) in menulist">
 					<p class="t"  v-bind:class="{ active: item.isShow }"  @click="clickMenu(index)" ><strong v-text="item.name"></strong><i class="demoSpan1"></i></p>
 					<ol class="ul-2" v-show="item.isShow">
-						<li v-for="oitem in item.content">
-							<router-link to="/listhost"><strong v-text="oitem.o_name"></strong></router-link>
+						<li v-for="oitem in item.content" @click="goLink">
+							<strong v-text="oitem.o_name"></strong>
 						</li>
 					</ol>
 
@@ -31,16 +31,22 @@
 		created() {
 		 },		
 		computed:{
-			...mapGetters(['menulist','leftbaron'])
+			...mapGetters(['menulist','leftbaron','transitionshow'])
 		},
 		methods:{
-			...mapActions(['clickMenu'])
+			...mapActions(['clickMenu']),
+			goLink(){
+				this.transitionshow.pngBg = false
+				this.$router.push({path: 'lists'})
+
+			}
+
 
 		}
 	}
 </script>
 <style scoped>
-.leftbar{position:absolute;top:0;left:0;width:10rem;height:100%;color:#fff;background:#444;    transition: transform .38s ease-in-out,visibility .38s,-webkit-transform .38s ease-in-out;z-index:1000;}
+.leftbar{position:absolute;top:0;left:0;width:10rem;height:100%;color:#fff;background:#444;    transition: transform .38s ease-in-out,visibility .38s,-webkit-transform .38s ease-in-out;z-index:2001;}
 .leftbar .title{height:2.5rem; padding:0 .5rem;font-size:.8rem;color:#fff;line-height:2.5rem;background:#333;}
 
 .ul-1>li{border-bottom:1px solid #555;}

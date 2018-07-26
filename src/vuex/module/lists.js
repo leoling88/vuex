@@ -60,9 +60,12 @@ const getters = {
 }
 const actions = {
 
-
+	goLink({commit}){
+		commit('leftbarShow')
+	}
 }
 const mutations = {
+
 
 }
 export default{

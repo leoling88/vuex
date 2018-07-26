@@ -2,12 +2,10 @@
   <div id="app" >
     <div class="vc-wrap">
       
-      <v-leftbar></v-leftbar>
-      <div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
+      
         <v-header :title="title" :menu-display="menuDisplay"></v-header>
         <router-view></router-view>
         <v-mask v-show="transitionshow.pngBg"></v-mask>
-      </div>
 
     </div>
 
@@ -15,7 +13,6 @@
 </template>
 <script>
 import header from '@/components/header'
-import leftbar from '@/components/leftbar'
 import mask from '@/components/transition/mask'
 import { mapGetters, mapAcitons } from 'vuex'
 export default {
@@ -26,7 +23,6 @@ export default {
   },
   components:{
     'v-header': header,
-    'v-leftbar': leftbar,
     'v-mask': mask
 
   },
@@ -37,7 +33,7 @@ export default {
    // ...mapGetters(['leftbaron'])
   },
   computed: {
-    ...mapGetters(['leftbaron','transitionshow']),
+    ...mapGetters(['transitionshow']),
     title () {
       switch (this.$route.path.split('/')[1]){
         case '':

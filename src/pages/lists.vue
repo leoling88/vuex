@@ -17,7 +17,6 @@ export default {
       'v-listshot': listhot
     },
     computed:{
-       // ...mapGetters(['listshot'])         
     }
 }
 

@@ -20,6 +20,6 @@
 	}
 </script>
 <style scoped>
-.png-bg{position:fixed;width:100%;height:100%;background:#000;top:0;left:0;opacity:.3; display:inline-flex;}
+.png-bg{position:fixed;width:100%;height:100%;background:#000;top:0;left:0;opacity:.3; z-index:2000;}
 
 </style>
