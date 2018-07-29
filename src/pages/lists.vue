@@ -1,9 +1,7 @@
 <template>
 <div>
 		<v-listhot :panellist="listshot"></v-listhot> <!--  :hot-list="listshot" class="3" -->
-		<div>
-<v-listhot :panellist="listshot2"></v-listhot>
-		</div>
+		<v-listhot :panellist="listshot2"></v-listhot>
 
 </div>
 
