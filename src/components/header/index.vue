@@ -34,7 +34,7 @@ import leftbar  from '@/components/leftbar'
 </script>
 <style scoped>
 
-.header{width:100%;height:2.5rem;background:#333;text-align:center; position:relative;}
+.header{width:100%;height:2.5rem;background:#333;text-align:center; position:relative;z-index:100;}
 .header .menu{display:block;width:2.5rem;height:2.5rem;position: absolute;background:#ccc;}
 .header .text{text-align: center;font-size:.8rem;color:#fff;}
 .header h1{line-height:2.5rem;color:#fff;}

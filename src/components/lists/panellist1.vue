@@ -16,12 +16,9 @@ export default {
 	},
 	data() {
 		return {
-
-
 		}
 	},
 	computed:{
-		//...mapGetters(['listshot'])
 	}
 }
 </script>

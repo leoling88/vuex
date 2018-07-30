@@ -1,14 +1,10 @@
 <template>
   <div id="app" >
     <div class="vc-wrap">
-      
-      
         <v-header :title="title" :menu-display="menuDisplay"></v-header>
         <router-view></router-view>
         <v-mask v-show="transitionshow.pngBg"></v-mask>
-
     </div>
-
   </div>
 </template>
 <script>

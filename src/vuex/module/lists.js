@@ -33,7 +33,7 @@ const state = {
 			name:'男子躲厕所拿镜子偷窥女租客 竟连小伙子也不放过',
 			title: '掘金',
 			img:['https://user-gold-cdn.xitu.io/2017/11/20/15fd79563b28dd6e?w=650&h=910&f=png&s=253799'],
-			imgnum:'1'
+			otype:'1'
 
 		},
 		{
