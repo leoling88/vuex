@@ -47,6 +47,18 @@ const state = {
 	},
 	transition_show:{
 		pngBg: false
+	},
+	scroll_param:{
+      pageX:0,
+      pageY:0,
+      myScroll:null,
+      scrollTop:0,
+      aspect: 0,  //1向上，2向下
+      myScrollH:0,     //可视框高度
+      myViewH:0,
+      loadMore: true,
+      loadIn:false,
+      pageNum:false,      		
 	}
 }
 //getters 抛出数据
@@ -55,7 +67,8 @@ const getters = {
 	menulist:state => state.menu_list,
 	leftbaron:state => state.leftmenu_show,
 	lists:state => state.lists_data,
-	transitionshow:state => state.transition_show
+	transitionshow:state => state.transition_show,
+	scrollparam:state => state.scroll_param
 
 }
 const actions = {
@@ -65,7 +78,14 @@ const actions = {
 	},
 	clickMenuShow({commit}){
 		commit('leftbarShow')
+	},
+	onTouchStart({commit},e){
+		commit('touchStart',e)
+	},
+	onTouchMove({commit},e){
+		commit('touchMove',e)
 	}
+
 
 }
 const mutations = {
@@ -94,7 +114,16 @@ const mutations = {
 			state.transition_show.pngBg = false
 
 		}
-	}
+	},
+    touchStart(state,e){ //触摸事件
+        state.scroll_param.pageX = e.targetTouches[0].pageX
+        state.scroll_param.pageY = e.targetTouches[0].pageY
+        console.log("X:" + state.scroll_param.pageX +"||" +"Y:" + state.scroll_param.pageY)
+    },
+    touchMove(state,e){
+    	console.log('ddd')
+    }
+
 }
 export default{
 	state,
