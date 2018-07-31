@@ -51,10 +51,8 @@ const state = {
 	scroll_param:{
       pageX:0,
       pageY:0,
-      myScroll:null,
       scrollTop:0,
       aspect: 0,  //1向上，2向下
-      myScrollH:0,     //可视框高度
       myViewH:0,
       loadMore: true,
       loadIn:false,
@@ -79,16 +77,23 @@ const actions = {
 	clickMenuShow({commit}){
 		commit('leftbarShow')
 	},
-	onTouchStart({commit},e){
+	onTouchStart({commit}, e) {
 		commit('touchStart',e)
 	},
-	onTouchMove({commit},e){
-		commit('touchMove',e)
+	onTouchMove({commit}, e) {
+		commit('touchMove', e)
+	},
+	onTouchEnd({commit}, e) {
+		commit('touchEnd', e)
+
 	}
 
 
 }
+
+let scrooll_h = 0
 const mutations = {
+
 	//点击事件高亮
 	menuShow(state, index){
 		console.log(state.menu_list[index].name)
@@ -115,13 +120,28 @@ const mutations = {
 
 		}
 	},
-    touchStart(state,e){ //触摸事件
+    touchStart(state, e){ //触摸事件
         state.scroll_param.pageX = e.targetTouches[0].pageX
         state.scroll_param.pageY = e.targetTouches[0].pageY
-        console.log("X:" + state.scroll_param.pageX +"||" +"Y:" + state.scroll_param.pageY)
+        console.log("X:" + state.scroll_param.pageX +"||" +"Y:" + state.scroll_param.pageY+"||" +h)
     },
-    touchMove(state,e){
-    	console.log('ddd')
+    touchMove(state, e){
+    	let h = document.documentElement.clientHeight || document.body.clientHeight;    	
+    	console.log(e.targetTouches[0].pageX +"<=====>"+state.scroll_param.pageX)
+    	if(e.targetTouches[0].pageX - state.scroll_param.pageX > 0) {     //向上华东
+    		console.log("向上")
+    		state.scroll_param.aspect = 1
+    		scrooll_h= e.targetTouches[0].pageX - state.scroll_param.pageX
+    	}
+    },
+    touchEnd(state, e){
+
+    	if( state.scroll_param.aspect === 1 ){
+    		state.scroll_param.aspect = 0
+    		state.scroll_param.scrollTop -= 200
+    		console.log(state.scroll_param.scrollTop)
+    	}
+
     }
 
 }

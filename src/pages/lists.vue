@@ -1,6 +1,6 @@
 <template>
 <div class="scroll-wrap">
-	<div v-bind:style="{'transform': 'translate3d(0, -200px, 0)'}" @touchstart="onTouchStart($event)"  @touchmove="onTouchMove($event)" >
+	<div class="scroll-wrap-box" v-bind:style="{'transform': 'translate3d( 0,'+scrollparam.scrollTop+'px, 0)'}" @touchstart="onTouchStart($event)"  @touchmove="onTouchMove($event)"  @touchend="onTouchEnd($event)">
 		<v-listhot :panellist="listshot"></v-listhot>
 		<v-listhot :panellist="listshot2"></v-listhot>
 
@@ -25,7 +25,6 @@ export default {
 		}
 	},
 	created:function() {
-		console.log(this.scrollparam)
 
 	},
 	components: {
@@ -37,7 +36,7 @@ export default {
 	methods:{
 
 
-		...mapActions(['onTouchStart','onTouchMove'])
+		...mapActions(['onTouchStart','onTouchMove','onTouchEnd'])
 	    // touchStart(e){ //触摸事件
 	    //     this.pageX = e.targetTouches[0].pageX
 	    //     this.pageY = e.targetTouches[0].pageY
