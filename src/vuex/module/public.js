@@ -52,8 +52,9 @@ const state = {
       pageX:0,
       pageY:0,
       pageHeight:'',
+      bodyHeight:'',
       scrollTop:0,
-      aspect: 0,  //1向上，2向下
+      aspect: 0,  //2向上，1向下
       myViewH:0,
       loadMore: true,
       loadIn:false,
@@ -120,30 +121,36 @@ const mutations = {
 		}
 	},
     touchStart(state, e){ //触摸事件
-    	let _h = e.currentTarget.offsetHeight
-        state.scroll_param.pageX = e.targetTouches[0].pageX
+        //state.scroll_param.pageX = e.targetTouches[0].pageX
         state.scroll_param.pageY = e.targetTouches[0].pageY
+        state.scroll_param.pageHeight = e.currentTarget.offsetHeight
+        state.scroll_param.bodyHeight = document.documentElement.clientHeight;
+        //console.log(state.scroll_param.pageHeight)
         //console.log("X:" + state.scroll_param.pageX +"||" +"Y:" + state.scroll_param.pageY)
     },
     touchMove(state, e){
     	  	
     	//console.log(e.targetTouches[0].pageX +"<=====>"+state.scroll_param.pageX)
-    	if(e.targetTouches[0].pageX > state.scroll_param.pageX ) {     //向上滑动
+    	if(e.targetTouches[0].pageY > state.scroll_param.pageY ) {     //向下滑动
     		state.scroll_param.aspect = 1
-    		scrooll_h = ( e.targetTouches[0].pageX - state.scroll_param.pageX ) * 10
-    	}else if( e.targetTouches[0].pageX < state.scroll_param.pageX ){  //向下滑动
+    		scrooll_h = ( e.targetTouches[0].pageY - state.scroll_param.pageY ) * 1
+    	}else if( e.targetTouches[0].pageY < state.scroll_param.pageY ){  //向上滑动
     		state.scroll_param.aspect = 2
-    		scrooll_h =  (state.scroll_param.pageX - e.targetTouches[0].pageX) * 10
+    		scrooll_h =  (state.scroll_param.pageY - e.targetTouches[0].pageY) * 1
     	}
     },
     touchEnd(state, e){
     	
-    	if( state.scroll_param.aspect === 1){
+    	if( state.scroll_param.aspect === 2 && ( state.scroll_param.bodyHeight + Math.abs(state.scroll_param.scrollTop) ) < state.scroll_param.pageHeight){
     		console.log("向上")
-			state.scroll_param.scrollTop -= scrooll_h 
-			if(state.scroll_param.scrollTop > 0) state.scroll_param.scrollTop = 0
-
-    	}else if( state.scroll_param.aspect === 2  && state.scroll_param.scrollTop < 0) {
+			state.scroll_param.scrollTop -= scrooll_h
+			if( state.scroll_param.bodyHeight + Math.abs(state.scroll_param.scrollTop) > state.scroll_param.pageHeight){   //回弹效果
+			
+               setTimeout(() => {
+					state.scroll_param.scrollTop = state.scroll_param.bodyHeight - state.scroll_param.pageHeight 
+                }, 300);
+			}
+    	}else if( state.scroll_param.aspect === 1  && state.scroll_param.scrollTop < 0) {
     		state.scroll_param.scrollTop += scrooll_h
     		if( state.scroll_param.scrollTop > 0) state.scroll_param.scrollTop = 0
 
