@@ -1,15 +1,16 @@
 <template>
 <div>
 	<v-leftbar></v-leftbar>
-<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
+	<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
 
-	<div class="home">
+		<div class="home" >
 
-哥是首页
+	哥是首页
+		</div>
+
 
 
 	</div>	
-</div>	
 </div>
 
 

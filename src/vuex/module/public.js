@@ -51,6 +51,7 @@ const state = {
 	scroll_param:{
       pageX:0,
       pageY:0,
+      pageHeight:'',
       scrollTop:0,
       aspect: 0,  //1向上，2向下
       myViewH:0,
@@ -85,9 +86,7 @@ const actions = {
 	},
 	onTouchEnd({commit}, e) {
 		commit('touchEnd', e)
-
 	}
-
 
 }
 
@@ -121,28 +120,42 @@ const mutations = {
 		}
 	},
     touchStart(state, e){ //触摸事件
+    	let _h = e.currentTarget.offsetHeight
         state.scroll_param.pageX = e.targetTouches[0].pageX
         state.scroll_param.pageY = e.targetTouches[0].pageY
-        console.log("X:" + state.scroll_param.pageX +"||" +"Y:" + state.scroll_param.pageY+"||" +h)
+        //console.log("X:" + state.scroll_param.pageX +"||" +"Y:" + state.scroll_param.pageY)
     },
     touchMove(state, e){
-    	let h = document.documentElement.clientHeight || document.body.clientHeight;    	
-    	console.log(e.targetTouches[0].pageX +"<=====>"+state.scroll_param.pageX)
-    	if(e.targetTouches[0].pageX - state.scroll_param.pageX > 0) {     //向上华东
-    		console.log("向上")
+    	  	
+    	//console.log(e.targetTouches[0].pageX +"<=====>"+state.scroll_param.pageX)
+    	if(e.targetTouches[0].pageX > state.scroll_param.pageX ) {     //向上滑动
     		state.scroll_param.aspect = 1
-    		scrooll_h= e.targetTouches[0].pageX - state.scroll_param.pageX
+    		scrooll_h = ( e.targetTouches[0].pageX - state.scroll_param.pageX ) * 10
+    	}else if( e.targetTouches[0].pageX < state.scroll_param.pageX ){  //向下滑动
+    		state.scroll_param.aspect = 2
+    		scrooll_h =  (state.scroll_param.pageX - e.targetTouches[0].pageX) * 10
     	}
     },
     touchEnd(state, e){
+    	
+    	if( state.scroll_param.aspect === 1){
+    		console.log("向上")
+			state.scroll_param.scrollTop -= scrooll_h 
+			if(state.scroll_param.scrollTop > 0) state.scroll_param.scrollTop = 0
 
-    	if( state.scroll_param.aspect === 1 ){
-    		state.scroll_param.aspect = 0
-    		state.scroll_param.scrollTop -= 200
-    		console.log(state.scroll_param.scrollTop)
+    	}else if( state.scroll_param.aspect === 2  && state.scroll_param.scrollTop < 0) {
+    		state.scroll_param.scrollTop += scrooll_h
+    		if( state.scroll_param.scrollTop > 0) state.scroll_param.scrollTop = 0
+
+    		console.log("向下")
+
     	}
-
+    		
+		console.log(state.scroll_param.scrollTop)
+		state.scroll_param.aspect = 0
     }
+
+
 
 }
 export default{
