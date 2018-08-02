@@ -62,7 +62,9 @@ const state = {
       loadMore: true,
       loadIn:false,
       pageNum:false,      		
-	}
+	},
+	
+	
 }
 //getters 抛出数据
 const getters = {
@@ -71,7 +73,7 @@ const getters = {
 	leftbaron:state => state.leftmenu_show,
 	lists:state => state.lists_data,
 	transitionshow:state => state.transition_show,
-	scrollparam:state => state.scroll_param
+	scrollparam:state => state.scroll_param,
 
 }
 const actions = {
@@ -146,11 +148,17 @@ const mutations = {
     	if( state.scroll_param.aspect === 2 && ( state.scroll_param.bodyHeight + Math.abs(state.scroll_param.scrollTop) ) <= state.scroll_param.pageHeight){
     		console.log("向上")
 			state.scroll_param.scrollTop -= scrooll_h
+			
 			if( state.scroll_param.bodyHeight + Math.abs(state.scroll_param.scrollTop) >= state.scroll_param.pageHeight){   //回弹效果
+               
+				state.transition_show.loading = true
                setTimeout(() => {
-					state.scroll_param.scrollTop = state.scroll_param.bodyHeight - state.scroll_param.pageHeight 
-                }, 300);
+					state.scroll_param.scrollTop = state.scroll_param.bodyHeight - state.scroll_param.pageHeight
+					state.scroll_param.scrollTop = state.scroll_param.scrollTop - 60  
+               }, 300);
+               //state.transition_show.loading = false
 			}
+			
     	}else if( state.scroll_param.aspect === 1  && state.scroll_param.scrollTop <= 0) {
     		state.scroll_param.scrollTop += scrooll_h
     		if( state.scroll_param.scrollTop >= 0) {

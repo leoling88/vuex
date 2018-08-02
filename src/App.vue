@@ -2,9 +2,12 @@
   <div id="app" >
     <div class="vc-wrap">
         <v-header :title="title" :menu-display="menuDisplay"></v-header>
+        <v-loading></v-loading> 
         <router-view></router-view>
+
         <v-mask v-show="transitionshow.pngBg"></v-mask>
-        <v-loading :loadin-display="loadShow" :loadup-display="loadUp" :loadover-display="loadOver"></v-loading>
+        
+        
 
     </div>
   </div>
@@ -48,13 +51,9 @@ export default {
       if (this.$route.path.split('/')[1] == "home" ) {
         return true
       }
-    },
-    loadShow () {
-      if(this.$store.transitionshow.loading == false) {
-
-      }
-
     }
+
+
 
   }
 }
