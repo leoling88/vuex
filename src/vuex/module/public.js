@@ -46,7 +46,10 @@ const state = {
 		xValueL:'-200'
 	},
 	transition_show:{
-		pngBg: false
+		pngBg: false,
+		loading: false,
+		promputup: false,
+		promputover: false,
 	},
 	scroll_param:{
       pageX:0,
@@ -129,7 +132,6 @@ const mutations = {
         //console.log("X:" + state.scroll_param.pageX +"||" +"Y:" + state.scroll_param.pageY)
     },
     touchMove(state, e){
-    	  	
     	//console.log(e.targetTouches[0].pageX +"<=====>"+state.scroll_param.pageX)
     	if(e.targetTouches[0].pageY > state.scroll_param.pageY ) {     //向下滑动
     		state.scroll_param.aspect = 1
@@ -141,18 +143,21 @@ const mutations = {
     },
     touchEnd(state, e){
     	
-    	if( state.scroll_param.aspect === 2 && ( state.scroll_param.bodyHeight + Math.abs(state.scroll_param.scrollTop) ) < state.scroll_param.pageHeight){
+    	if( state.scroll_param.aspect === 2 && ( state.scroll_param.bodyHeight + Math.abs(state.scroll_param.scrollTop) ) <= state.scroll_param.pageHeight){
     		console.log("向上")
 			state.scroll_param.scrollTop -= scrooll_h
-			if( state.scroll_param.bodyHeight + Math.abs(state.scroll_param.scrollTop) > state.scroll_param.pageHeight){   //回弹效果
-			
+			if( state.scroll_param.bodyHeight + Math.abs(state.scroll_param.scrollTop) >= state.scroll_param.pageHeight){   //回弹效果
                setTimeout(() => {
 					state.scroll_param.scrollTop = state.scroll_param.bodyHeight - state.scroll_param.pageHeight 
                 }, 300);
 			}
-    	}else if( state.scroll_param.aspect === 1  && state.scroll_param.scrollTop < 0) {
+    	}else if( state.scroll_param.aspect === 1  && state.scroll_param.scrollTop <= 0) {
     		state.scroll_param.scrollTop += scrooll_h
-    		if( state.scroll_param.scrollTop > 0) state.scroll_param.scrollTop = 0
+    		if( state.scroll_param.scrollTop >= 0) {
+               setTimeout(() => {
+					state.scroll_param.scrollTop = 0
+                }, 300);    			
+    		}
 
     		console.log("向下")
 

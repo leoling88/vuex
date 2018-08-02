@@ -1,6 +1,6 @@
 <template>
 <div class="scroll-wrap">
-	<div class="scroll-wrap-box" v-bind:style="{'transform': 'translate3d( 0,'+scrollparam.scrollTop+'px, 0)'}" @touchstart="onTouchStart($event)"  @touchmove="onTouchMove($event)"  @touchend="onTouchEnd($event)" ref="viewHeight">
+	<div class="scroll-wrap-box mart-60" v-bind:style="{'transform': 'translate3d( 0,'+scrollparam.scrollTop+'px, 0)'}" @touchstart="onTouchStart($event)"  @touchmove="onTouchMove($event)"  @touchend="onTouchEnd($event)" ref="viewHeight">
 		<v-listhot :panellist="listshot"></v-listhot>
 		<v-listhot :panellist="listshot2"></v-listhot>
 	</div>
@@ -19,9 +19,7 @@ export default {
 		return {
 			listshot2: [
 			{name:'1111'}
-
 			]
-
 
 		}
 	},

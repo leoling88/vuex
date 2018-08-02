@@ -4,12 +4,15 @@
         <v-header :title="title" :menu-display="menuDisplay"></v-header>
         <router-view></router-view>
         <v-mask v-show="transitionshow.pngBg"></v-mask>
+        <v-loading :loadin-display="loadShow" :loadup-display="loadUp" :loadover-display="loadOver"></v-loading>
+
     </div>
   </div>
 </template>
 <script>
 import header from '@/components/header'
 import mask from '@/components/transition/mask'
+import load from '@/components/transition/load'
 import { mapGetters, mapAcitons } from 'vuex'
 export default {
   name: 'App',
@@ -19,7 +22,8 @@ export default {
   },
   components:{
     'v-header': header,
-    'v-mask': mask
+    'v-mask': mask,
+    'v-loading': load,
 
   },
   created:function(){
@@ -33,13 +37,23 @@ export default {
     title () {
       switch (this.$route.path.split('/')[1]){
         case '':
-          return "VC-UI"
+          return "VC-UI";
+        case 'home':
+          return "HOME";
+        case 'lists':
+          return '列表页'
       }
     },
     menuDisplay () {
-      if (this.$route.path.split('/')[1] == "home") {
+      if (this.$route.path.split('/')[1] == "home" ) {
         return true
       }
+    },
+    loadShow () {
+      if(this.$store.transitionshow.loading == false) {
+
+      }
+
     }
 
   }
