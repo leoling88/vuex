@@ -58,10 +58,9 @@ const state = {
       bodyHeight:'',
       scrollTop:0,
       aspect: 0,  //2向上，1向下
-      myViewH:0,
       loadMore: true,
-      loadIn:false,
-      pageNum:false,      		
+      pageNum:'0'
+ 		
 	},
 	
 	
@@ -148,14 +147,36 @@ const mutations = {
     	if( state.scroll_param.aspect === 2 && ( state.scroll_param.bodyHeight + Math.abs(state.scroll_param.scrollTop) ) <= state.scroll_param.pageHeight){
     		console.log("向上")
 			state.scroll_param.scrollTop -= scrooll_h
-			
+
 			if( state.scroll_param.bodyHeight + Math.abs(state.scroll_param.scrollTop) >= state.scroll_param.pageHeight){   //回弹效果
-               
-				state.transition_show.loading = true
-               setTimeout(() => {
-					state.scroll_param.scrollTop = state.scroll_param.bodyHeight - state.scroll_param.pageHeight
-					state.scroll_param.scrollTop = state.scroll_param.scrollTop - 60  
-               }, 300);
+				if( state.scroll_param.loadMore ){
+					state.transition_show.loading = true
+
+		            this.$http({
+		              method:'get',
+		              baseURL: '',        //baseURL: '/api'
+		              url:'static/goodsdata.json'     //'static/goodsdata.json'
+		            }).then((res) => {
+		              for(var i = 0; i < res.data.listshot2.length; i ++){
+		                this.newsHot.push(res.data.listshot2[i])
+		                this.loadIn = false      //隐藏"加载中..."提示
+		                this.loadMore = true     //显示"加载更多"提示
+		                this.pageNum = false     //是否有更多数据加载
+		              }
+		            }).catch(function(err){
+		              console.log(err)
+		            })
+
+
+
+					
+						setTimeout(() => {
+							state.scroll_param.scrollTop = state.scroll_param.bodyHeight - state.scroll_param.pageHeight
+							state.scroll_param.scrollTop = state.scroll_param.scrollTop - 60  
+						}, 300);					
+				}
+				               
+
                //state.transition_show.loading = false
 			}
 			
