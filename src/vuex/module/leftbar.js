@@ -66,12 +66,13 @@ const actions = {
 const mutations = {
 	//点击事件高亮
 	menuShow(state, index){
-		console.log(state.menu_list[index].name)
+		
 		state.menu_list.forEach((n, i) => {
+			console.log("===="+i + index)
 			if(i == index){
-				state.menu_list[i].isShow = state.menu_list[i].isShow == false ? true : false 
-			}else{
-				state.menu_list[i].isShow = false
+
+				state.menu_list[index].isShow == true ? true : false
+				// alert(state.menu_list[index].isShow)
 			}
 		})
 

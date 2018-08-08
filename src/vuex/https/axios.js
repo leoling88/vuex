@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // 创建axios实例 application/x-www-data-urlencoded  application/json
 const service = axios.create({
-  baseURL: '/',
+  baseURL: 'http://www.niepengfei.cn/PHPFile/ybtDemo/',
   timeout: 15000,
   headers: {'Content-Type': 'application/json'}
 })

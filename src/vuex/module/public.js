@@ -93,12 +93,6 @@ const state = {
 
 		}
 	],
-	leftmenu_show:{
-		xValueR:0,
-		xValueL:'-200',
-		leftbarOn:false,
-
-	},
 	transition_show:{
 		pngBg: false,
 		loading: false,
@@ -122,20 +116,13 @@ const state = {
 //getters 抛出数据
 const getters = {
 	//导航菜单
-	leftbaron:state => state.leftmenu_show,
 	transitionshow:state => state.transition_show,
 	scrollparam:state => state.scroll_param,
 	listsdata:state => state.lists_data
 
 }
 const actions = {
-	//菜单点击事
-	clickMenu({commit},index){
-		commit('menuShow', index)
-	},
-	clickMenuShow({commit}){
-		commit('leftbarShow')
-	},
+
 	onTouchStart({commit}, e) {
 		commit('touchStart',e)
 	},
@@ -151,32 +138,7 @@ const actions = {
 let scrooll_h = 0
 const mutations = {
 
-	//点击事件高亮
-	menuShow(state, index){
-		console.log(state.menu_list[index].name)
-		state.menu_list.forEach((n, i) => {
-			if(i == index){
-				state.menu_list[i].isShow = state.menu_list[i].isShow == false ? true : false 
-			}else{
-				state.menu_list[i].isShow = false
-			}
-		})
 
-	},
-	leftbarShow(){
-		if(!state.leftmenu_show.leftbarOn){
-			state.leftmenu_show.leftbarOn = true
-			state.leftmenu_show.xValueR = 200
-			state.leftmenu_show.xValueL = 0
-			state.transition_show.pngBg = true
-		}else{
-			state.leftmenu_show.leftbarOn = false
-			state.leftmenu_show.xValueR = 0
-			state.leftmenu_show.xValueL = -200
-			state.transition_show.pngBg = false
-
-		}
-	},
     touchStart(state, e){ //触摸事件
         //state.scroll_param.pageX = e.targetTouches[0].pageX
         state.scroll_param.pageY = e.targetTouches[0].pageY
