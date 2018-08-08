@@ -1,9 +1,9 @@
 <template>
 <div class="scroll-wrap">
 	<div class="scroll-wrap-box" v-bind:style="{'transform': 'translate3d( 0,'+scrollparam.scrollTop+'px, 0)'}" @touchstart="onTouchStart($event)"  @touchmove="onTouchMove($event)"  @touchend="onTouchEnd($event)" ref="viewHeight">
-		<v-listhot :panellist="listshot"></v-listhot>
-		<v-listhot :panellist="listshot2"></v-listhot>
-	</div>
+		<v-listhot :panellist="listsdata"></v-listhot>
+<!-- 		<v-listhot :panellist="listshot2"></v-listhot>
+ -->	</div>
 
 </div>
 
@@ -18,9 +18,6 @@ export default {
 
 	data() {
 		return {
-			listshot2: [
-			{name:'1111'}
-			]
 
 		}
 	},
@@ -34,19 +31,10 @@ export default {
 	  'v-listhot': listhot
 	},
 	computed:{
-		...mapGetters(['listshot','scrollparam'])
+		...mapGetters(['listsdata','scrollparam'])
 	},
 	methods:{
-
-
 		...mapActions(['onTouchStart','onTouchMove','onTouchEnd'])
-	    // touchStart(e){ //触摸事件
-	    //     this.pageX = e.targetTouches[0].pageX
-	    //     this.pageY = e.targetTouches[0].pageY
-	    //     console.log("X:" + this.pageX +"||" +"Y:" + this.pageY)
-
-	         
-	    // }
 	}
 }
 
