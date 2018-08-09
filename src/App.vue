@@ -34,7 +34,7 @@ export default {
 
   },
   methods:{
-   // ...mapGetters(['leftbaron'])
+   ...mapGetters(['leftbaron'])
   },
   computed: {
     ...mapGetters(['transitionshow']),

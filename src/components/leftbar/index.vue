@@ -3,7 +3,7 @@
 		<div class="title">公众受理平台</div>
 		<div>
 			<ul class="ul-1 li-item">
-				<liv-for="(item,index) in panellist" >
+				<li v-for="(item,index) in panellist" >
 					<p class="t"  v-bind:class="{ active: item.isShow }"  @click="clickMenu(index)" ><strong v-text="item.name"></strong><i class="demoSpan1"></i></p>
 					<ol class="ul-2" v-show="item.isShow">
 						<li v-for="oitem in item.content" @click="goLink">
