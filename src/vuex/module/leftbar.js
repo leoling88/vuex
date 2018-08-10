@@ -66,16 +66,11 @@ const actions = {
 const mutations = {
 	//点击事件高亮
 	menuShow(state, index){
-		
 		state.menu_list.forEach((n, i) => {
-			console.log("===="+i + index)
-			if(i == index){
-
-				state.menu_list[index].isShow == true ? true : false
-				// alert(state.menu_list[index].isShow)
+			if( i == index) {
+				state.menu_list[index].isShow = state.menu_list[index].isShow == false ? true : false
 			}
 		})
-
 	},
 	leftbarShow(){
 		if(!state.leftmenu_show.leftbarOn){
@@ -86,7 +81,6 @@ const mutations = {
 			state.leftmenu_show.leftbarOn = false
 			state.leftmenu_show.xValueR = 0
 			state.leftmenu_show.xValueL = -200
-
 		}
 	}
 }
@@ -95,4 +89,4 @@ export default{
 	getters,
 	actions,
 	mutations,
-}
+} 
