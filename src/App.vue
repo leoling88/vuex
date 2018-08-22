@@ -2,7 +2,7 @@
   <div id="app" >
     <div class="vc-wrap">
         <v-header :title="title" :menu-display="menuDisplay"></v-header>
-        <v-loading></v-loading> 
+        <v-loading :show="loadingShow"></v-loading> 
         <router-view></router-view>
 
         <v-mask v-show="transitionshow.pngBg"></v-mask>
@@ -15,8 +15,8 @@
 <script>
 import header from '@/components/header'
 import mask from '@/components/transition/mask'
-import load from '@/components/transition/load'
-import { mapGetters, mapAcitons } from 'vuex'
+import load from '@/components/transition/loading'
+import {  mapState, mapGetters, mapAcitons } from 'vuex'
 export default {
   name: 'App',
   data(){
@@ -34,9 +34,14 @@ export default {
 
   },
   methods:{
-   ...mapGetters(['leftbaron'])
+
+   
+   ...mapGetters(['leftbaron']),
+
+
   },
   computed: {
+    ...mapState(['loadingShow']),
     ...mapGetters(['transitionshow']),
     title () {
       switch (this.$route.path.split('/')[1]){

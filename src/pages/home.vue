@@ -3,7 +3,7 @@
 	<v-leftbar :panellist="menulist" ></v-leftbar>
 	<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
 
-		<div class="home" >
+		<div class="home" @click="cc()" >
 
 	哥是首页
 		</div>
@@ -18,7 +18,7 @@
 </template>
 <script>
 	import leftbar from '@/components/leftbar'
-	import {mapGetters, mapActions} from 'vuex'
+	import {mapState, mapGetters, mapActions} from 'vuex'
 	export default{
 		name: 'home',
 		props: {
@@ -40,6 +40,9 @@
 
 		},
 		methods:{
+			cc() {
+				this.$store.commit('COM_LOADING_STATUS', true);
+			}
 		}
 	}
 </script>

@@ -4,26 +4,15 @@ import * as types from '../types'
  * App通用配置
  */
 const state = {
-	loading: false
+	loadingShow: false
 
 }
 
-const actions = {
-    setLoadingState({ commit }, status) {
-        commit(types.COM_LOADING_STATUS, status)
-    },
-
-}
-
-const getters = {
-	loading: state => state.loading,
-
-}
 
 
 const mutations = {
-    [types.COM_LOADING_STATUS](state, status) {
-        state.loading = status
+    COM_LOADING_STATUS(state, status) {
+        state.loadingShow = status
     },
 
 }
@@ -31,7 +20,5 @@ const mutations = {
 
 export default {
     state,
-    actions,
-    getters,
     mutations
 }
