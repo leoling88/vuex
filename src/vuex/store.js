@@ -1,3 +1,4 @@
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 import topbar from './module/public'
@@ -8,6 +9,7 @@ import leftbar from './module/leftbar'
 
 Vue.use(Vuex);
 export default new Vuex.Store({
+
 	modules:{
 		topbar,
 		mine,

@@ -41,7 +41,9 @@ export default {
 
   },
   computed: {
-    ...mapState(['loadingShow']),
+    ...mapState({
+        loadingShow: state => state.com.loadingShow
+    }),
     ...mapGetters(['transitionshow']),
     title () {
       switch (this.$route.path.split('/')[1]){

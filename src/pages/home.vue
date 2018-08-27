@@ -41,6 +41,7 @@
 		},
 		methods:{
 			cc() {
+				alert()
 				this.$store.commit('COM_LOADING_STATUS', true);
 			}
 		}
