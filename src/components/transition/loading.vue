@@ -27,19 +27,14 @@
 <style scoped>
   .loading{position: fixed;  top: -100%; left: 0;  right: 0;  z-index: 9999999;  width: 100%;  height: 100%;opacity: 0;}
   .loading.show {top:0;opacity: 1;}
-  .loader-inner{width:6rem;height:6rem;margin:20% auto;border-radius:.2rem; background:#000;transition: all .5s ease; transform: translateY(-100%);opacity:0;}
-  .loader-inner{}
-  .loading.show .loader-inner{transform: translateY(50%);opacity:.8;}
+  .loader-inner{background:#000;transition: all .5s ease; transform: translateY(-100%);opacity:0;}
+  .loading.show .loader-inner{width:4.5rem;height:4.5rem;margin:20% auto;border-radius:.2rem; transition: all .5s ease; transform: translateY(-100%);transform: translateY(50%);opacity:.6;}
   .loader-svg {
       display: inline-block;
-      width: 200px;
-      height: 200px;
-      border: 1px solid currentcolor;
-      border-radius: 3px;
+      width: 100%;
+      height: 100%;
+      margin:auto;
       font-size: 30px;
-      color: rgba(200, 200, 200, 0.5);
-      padding: 1em;
-      margin-bottom: .25em;
       vertical-align: top;
       -webkit-transition: .3s color, .3s border;
       transition: .3s color, .3s border;
