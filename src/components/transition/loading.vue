@@ -27,8 +27,8 @@
 <style scoped>
   .loading{position: fixed;  top: -100%; left: 0;  right: 0;  z-index: 9999999;  width: 100%;  height: 100%;opacity: 0;}
   .loading.show {top:0;opacity: 1;}
-  .loader-inner{background:#000;transition: all .5s ease; transform: translateY(-100%);opacity:0;}
-  .loading.show .loader-inner{width:4.5rem;height:4.5rem;margin:20% auto;border-radius:.2rem; transition: all .5s ease; transform: translateY(-100%);transform: translateY(50%);opacity:.6;}
+  .loader-inner{background:#000;transition: all .5s ease; transform: translateY(-100%);opacity:0;position:absolute;left:50%;}
+  .loading.show .loader-inner{width:4.5rem;height:4.5rem;margin-top:20% ;margin-left:-2.25rem;border-radius:.2rem; transition: all .5s ease; transform: translateY(-100%);transform: translateY(50%);opacity:.6;}
   .loader-svg {
       display: inline-block;
       width: 100%;
@@ -59,6 +59,7 @@
       pointer-events: none;
   }
 .loader-03 {
+  margin:1.2rem;
     border: .2em solid currentcolor;
     border-bottom-color: transparent;
     border-radius: 50%;
