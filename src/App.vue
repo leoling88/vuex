@@ -34,11 +34,7 @@ export default {
 
   },
   methods:{
-
-   
    ...mapGetters(['leftbaron']),
-
-
   },
   computed: {
     ...mapState({
