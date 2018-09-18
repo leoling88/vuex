@@ -26,6 +26,7 @@
 		},
 		data () {
 			return {
+				totalTime:2
 			
 			}
 		},
@@ -42,6 +43,14 @@
 		methods:{
 			cc() {
 				this.$store.commit('COM_LOADING_STATUS', true);
+				 let clock = window.setInterval(() => {
+				  this.totalTime--
+				  if (this.totalTime < 0) {     //当倒计时小于0时清除定时器
+				    window.clearInterval(clock)
+					this.$store.commit('COM_LOADING_STATUS', false);
+
+				    }
+				 },1000)
 			}
 		}
 	}
