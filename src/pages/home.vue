@@ -11,7 +11,7 @@
 
 
 	</div>	
-	<v-alert v-model="alertVal" type="confirm" title="我是标题" content="我是内容" v-on:cancel="clickCancel()" @danger="clickDanger()" @confirm="clickConfirm()"></v-alert>
+	<v-alert v-model="alertVal.show" type="confirm" title="我是标题" content="我是内容" v-on:cancel="clickCancel()" @danger="clickDanger()" @confirm="clickConfirm()"></v-alert>
 </div>
 
 
@@ -29,7 +29,10 @@
 		data () {
 			return {
 				totalTime:2,
-				alertVal: false,
+				alertVal:{
+					show:false,
+					title: '重要提示'
+				} 
 
 			}
 		},
@@ -61,8 +64,8 @@
 			},
 	        openAlert(index){
 	        	
-	            this.alertVal = true;
-	            console.log(this.alertVal)
+	            this.alertVal.show = true;
+	            console.log(this.alertVal.show)
 	        },
 	        clickCancel(){
 	            console.log('点击了取消');
