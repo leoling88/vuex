@@ -4,18 +4,12 @@
         <v-header :title="title" :menu-display="menuDisplay"></v-header>
         <v-loading :show="loadingShow"></v-loading> 
         <router-view></router-view>
-
-        <v-mask v-show="transitionshow.pngBg"></v-mask>
-        
-        
-
     </div>
   </div>
 </template>
 <script>
 import header from '@/components/header'
-import mask from '@/components/transition/mask'
-import load from '@/components/transition/loading'
+import load from '@/components/com/loading'
 import {  mapState, mapGetters, mapAcitons } from 'vuex'
 export default {
   name: 'App',
@@ -26,8 +20,7 @@ export default {
   },
   components:{
     'v-header': header,
-    'v-mask': mask,
-    'v-loading': load,
+    'v-loading': load,   //加载效果
 
   },
   created:function(){

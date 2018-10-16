@@ -1,11 +1,12 @@
 <template>
 	<div v-show="alertShow">
 		<div class="alert-box">
-			<div class="alert-title">{{title}}</div>
-			<div class="alert-con" v-html="content"></div>
+			 <strong class="alert-title"><slot name="title" ></slot></strong>
+			 <div class="alert-con"><slot name="content"></slot></div>
+
 			<div class="alert-bot">
-				<span class="bor-right color-2"  v-if="type == 'confirm'"  @click="closeBtn">{{but_1}}</span>
-				<span class="color-1"  v-if="type == 'confirm'"  @click="confirmBtn" >{{but_2}}</span>
+				<span class="but bor-right color-2"  v-if="type == 'confirm'"  @click="clickCancel"><slot name="butB"></slot></span>
+				<span class="but color-1"  v-if="type == 'confirm'"  @click="confirmBtn" ><slot name="butA"></slot></span>
 			</div>
  
 		</div>
@@ -27,22 +28,6 @@
 			type: {
 				type: String,
 				default: 'default'				
-			},
-			content:{
-				type: String,
-				default: ''							
-			},
-			title:{
-				type: String,
-				default: ''							
-			},
-			but_1:{
-				type: String,
-				default: '取消'							
-			},
-			but_2:{
-				type: String,
-				default: '确定'							
 			}
 
 
@@ -56,8 +41,8 @@
 			closeAlert () {
 				this.alertShow = false;
 			},
-	        closeBtn(){
-	            this.$emit('confirm');
+	        clickCancel(){
+	            this.$emit('cancel');
 	            this.closeAlert();
 	        },
 	        confirmBtn(){
@@ -81,10 +66,10 @@
 </script>
 <style scoped>
 .alert-box{width:18rem;margin-left:-9rem;top:30%;left:50%;position:fixed; z-index:2001;background:#fff;}
-.alert-box .alert-title{border-bottom:.05rem solid #f1f1f1;padding:.5rem 0;font-size:.8rem; text-align:center;color:#666;}
+.alert-box .alert-title{ display:block;border-bottom:.05rem solid #f1f1f1;padding:.5rem 0;font-size:.8rem; text-align:center;color:#666; text-align: center;}
 .alert-box .alert-con{padding:.6rem;color:#888;text-align: center;}
 .alert-box .alert-bot{border-top:.05rem solid #f1f1f1;}
-.alert-box .alert-bot span{display:block;float:left;width:49.5%;padding:.5rem 0; text-align:center;}
+.alert-box .alert-bot .but{display:block;float:left;width:49.5%;padding:.8rem 0; text-align:center;}
 .png-bg{position:fixed;width:100%;height:100%;background:#000;top:0;left:0;opacity:.3; z-index:2000;}
 .bor-right{border-right:.05rem solid #f1f1f1;}
 .color-1{color:#000;}

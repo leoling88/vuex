@@ -22,7 +22,7 @@ const mutations = {
         state.loadingShow = status
     },
     COM_ALERT_STATUS(state, alertValue) {
-        state.alertShow = alertValue
+        state.alertShow = alertShow
     },
 }
 
