@@ -3,18 +3,25 @@
 	<v-leftbar :panellist="menulist" ></v-leftbar>
 	<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
 
-		<div class="swipe-wrap" :style="{'width':swinper.width + 'px'}">
-			<div class="swipe-box" :style="{'width':swinper.ulWidth + 'px','transform': 'translate3d('+swinper.left +'px,, 0, 0)'}">
+<!-- 		<div class="swipe-wrap" :style="{'width':swinper.width + 'px'}" @touchstart.prevent="touchStart" @touchmove.prevent="touchMove" @touchend="touchEnd" ref="back">
+			<div class="swipe-box" :style="{'width':swinper.ulWidth + 'px','transform': 'translate3d('+swinper.left +'px, 0, 0)'}">
 				<ul class="lists">
-					<li v-for="item in imgLists" :style="{'width':swinper.width + 'px'}"><img :src="item.img" alt=""></li>
+					<li v-for="(item, index) in imgLists" :style="{'width':swinper.width + 'px'}">View  <font>{{index}}</font></li>
 
 				</ul>
 			</div>
+			<div class="title">{{swinper.title}}</div>
+			<div class="page">
+				<div class="page-view">
+					<span v-for="(item, index) in imgLists" @click="clickSwinper(index)"></span><i :style="{'transform': 'translate3d('+swinper.hover +'rem, 0, 0)'}"></i>
+				</div>
+			</div>
 		</div>
+ -->
 
 
-
-
+		<v-swiper :swiperLists = "imgLists" :swinperView="swinper">
+		</v-swiper>
 
 
 
@@ -45,11 +52,15 @@
 <script>
 	import leftbar from '@/components/leftbar'
 	import alerts from '@/components/com/alert'	
+	import swipers from '@/components/com/swiper'		
 	import {mapState, mapGetters, mapActions} from 'vuex'
+
 	export default{
 		name: 'home',
 		props: {
-			panellist: Array
+			panellist: Array,
+			swiperLists: Array,
+			swinperView: Object
 		},
 		data () {
 			return {
@@ -71,12 +82,17 @@
 					title:'',
 					titleShow: true,
 					about:'',
-					aboutShow: true
+					aboutShow: true,
+					hover:'',
+					viewX:document.body.clientWidth,
+					pageX:'1.5',
+
 				},
 				imgLists:[
-					{img:'https://www.baidu.com/img/bd_logo1.png'},
-					{img:'https://www.baidu.com/img/bd_logo1.png'},
-					{img:'https://www.baidu.com/img/bd_logo1.png'},
+					{img:'https://www.baidu.com/img/bd_logo1.png',title:'000',url:'page/'},
+					{img:'https://www.baidu.com/img/bd_logo1.png',title:'111',url:'http://www.sina.com'},
+					{img:'https://www.baidu.com/img/bd_logo1.png',title:'2222',url:'http://www.qq.com'},
+					{img:'https://www.baidu.com/img/bd_logo1.png',title:'3333',url:'http://www.qq.com'},
 				]
 
 
@@ -85,13 +101,19 @@
 		},
 		components:{
 			'v-leftbar': leftbar,
-			'v-alert': alerts
+			'v-alert': alerts,
+			'v-swiper':swipers,
 
 		},
-		created:function(){
-			this.swinperShow()
+	    mounted(){
+	    	const _this = this
+		    window.onresize = function temp() {
+		    	_this.swinper.viewX = document.body.clientWidth
+		    	console.log('父组件发生变化===>' + _this.swinper.viewX)
+		    };
 
-		},		
+
+	    },	
 		computed:{
 	
 		    ...mapGetters(['leftbaron','menulist'])		
@@ -110,6 +132,9 @@
 				 //    }
 				 // },1000)
 			},
+			bannerLink () {
+				alert(index)
+		},
 	        openAlert(index){
 	        	
 	            this.alertVal.show = true;
@@ -121,27 +146,6 @@
 	        clickConfirm(){
 	            console.log('点击了confirm');
 	        },
-	        swinperShow () {
-				const swinperW = document.body.clientWidth
-				const page = this.imgLists.length
-				let num = 0
-				let _this = this
-				this.swinper.width = swinperW
-				this.swinper.ulWidth = page * swinperW
-				this.timer=setInterval(function(){
-					if(num < page){
-						console.log(num)
-						num ++
-						//_this.swinper.left = '-'+num * swinperW
-		            
-					}else{
-						num = 0
-		
-					}
-					console.log(_this.swinper.left)
-				},3000);
-				//swinper.left
-	        }
 
 		}
 	}
@@ -149,16 +153,4 @@
 <style scoped>
 .home{padding:5rem 0;font-size:2rem; text-align:center;color:#666;}
 
-
-.swipe-wrap{
-	width:100%;
-	height:200px;
-	position: relative;
-	overflow:auto;
-	background:#ccc;
-}
-.swipe-box{width:100%;position:absolute;top:0;left:0;border:1px solid #ccc;transition: transform .38s ease-in-out,visibility .38s,-webkit-transform .38s ease-in-out;}
-.swipe-box .lists li{float:left; height:100%;}
-.swipe-box .lists li:nth-child(1){background:#ccc}
-.swipe-box .lists li:nth-child(2){background:#eee}
 </style>
