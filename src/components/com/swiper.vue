@@ -84,8 +84,8 @@
 	        clickSwinper (index) {
 	        	direction = 0
 	        	num = index
-				this.swinperView.left = '-'+index * swinperW
-				this.swinperView.hover = index * pageX							
+				this.swinperView.left = '-'+num * swinperW
+				this.swinperView.hover = num * pageX							
 				this.swinperView.title = this.swiperLists[index].title		
 
 	        },
@@ -148,6 +148,7 @@
 					swinperW =  this.swinperView.viewX
 					this.swinperView.width = swinperW
 					this.swinperView.ulWidth = page * swinperW
+					this.swinperView.hover = num * pageX
             	}
             },
 
