@@ -2,29 +2,9 @@
 <div>
 	<v-leftbar :panellist="menulist" ></v-leftbar>
 	<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
-
-<!-- 		<div class="swipe-wrap" :style="{'width':swinper.width + 'px'}" @touchstart.prevent="touchStart" @touchmove.prevent="touchMove" @touchend="touchEnd" ref="back">
-			<div class="swipe-box" :style="{'width':swinper.ulWidth + 'px','transform': 'translate3d('+swinper.left +'px, 0, 0)'}">
-				<ul class="lists">
-					<li v-for="(item, index) in imgLists" :style="{'width':swinper.width + 'px'}">View  <font>{{index}}</font></li>
-
-				</ul>
-			</div>
-			<div class="title">{{swinper.title}}</div>
-			<div class="page">
-				<div class="page-view">
-					<span v-for="(item, index) in imgLists" @click="clickSwinper(index)"></span><i :style="{'transform': 'translate3d('+swinper.hover +'rem, 0, 0)'}"></i>
-				</div>
-			</div>
-		</div>
- -->
-
-
-		<v-swiper :swiperLists = "imgLists" :swinperView="swinper">
-		</v-swiper>
-
-
-
+		<!--轮播-->
+		<v-swiper :swiperLists = "imgLists" :swinperView="swinper"></v-swiper>
+		<!--轮播 end -->
 		<div class="home" @click="cc" >
 	哥是首页
 		</div>
@@ -80,11 +60,11 @@
 					length:'',
 					page:'',
 					title:'',
-					titleShow: true,
+					titleShow: false,
 					about:'',
 					aboutShow: true,
 					hover:'',
-					viewX:document.body.clientWidth,
+					viewX: document.body.clientWidth,
 					pageX:'1.5',
 
 				},
@@ -116,7 +96,8 @@
 	    },	
 		computed:{
 	
-		    ...mapGetters(['leftbaron','menulist'])		
+		    ...mapGetters(['leftbaron','menulist'])	
+
 
 		},
 		methods:{
@@ -148,6 +129,9 @@
 	        },
 
 		}
+
+
+
 	}
 </script>
 <style scoped>
