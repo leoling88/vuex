@@ -1,7 +1,7 @@
 <template>
 <div>
-	<v-leftbar :panellist="menulist" ></v-leftbar>
-	<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
+<!-- 	<v-leftbar :panellist="menulist" ></v-leftbar>
+ -->	<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
 		<!--轮播--
 		<v-swiper :swiperLists = "imgLists" :swinperView="swinper"></v-swiper>
 		--轮播 end -->
@@ -12,10 +12,7 @@
 
 
 	</div>
-	<!--数据加载show-->
-	<v-loadup :loadupShow = "loadups">
-	</v-loadup>	
-	<!--数据加载show  end-->		
+		
 
 	<!--弹框-->
 	<v-alert v-model="alertVal.show" type="confirm" title="我是标题" content="我是内容" @cancel="clickCancel"  @confirm="clickConfirm">
@@ -46,7 +43,7 @@
 			panellist: Array,
 			swiperLists: Array,
 			swinperView: Object,
-			loadups:Object,
+			loadupShow: Object,
 		},
 		data () {
 			return {
@@ -81,7 +78,7 @@
 					{img:'http://img3.imgtn.bdimg.com/it/u=553010038,2994934751&fm=200&gp=0.jpg',title:'3333',url:'http://www.qq.com'},
 				],
 				loadups:{     //加载状态
-					loading: true,
+					loading: false,
 					promputup: false,
 					promputover: false,
 				},
@@ -100,6 +97,7 @@
 	    mounted(){
 	    	const _this = this
 		    window.onresize = function temp() {
+		    	_this.loadups.loading = true
 		    	_this.swinper.viewX = document.body.clientWidth
 		    	console.log('父组件发生变化===>' + _this.swinper.viewX)
 		    };

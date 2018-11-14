@@ -1,8 +1,8 @@
 <template>
     <div class="load-box">
-    	<div class="load-in" v-show="loadups.loading"><img :src="loadImg" alt="">努力加载中...</div>
-    	<div class="load-in" v-show="loadups.promputup">向上滑动加载更多</div>
-    	<div class="load-in" v-show="loadups.promputover">没有更多数据</div>
+    	<div class="load-in" v-show="loadupShow.loading"><img :src="loadImg" alt="">努力加载中...</div>
+    	<div class="load-in" v-show="loadupShow.promputup">向上滑动加载更多</div>
+    	<div class="load-in" v-show="loadupShow.promputover">没有更多数据</div>
     </div>
 
 </template>
@@ -11,7 +11,7 @@
 	export default {
 		name: 'loadup',
 	    props: {
-	      loadups: Object
+	      loadupShow: Object
 	    },
 		data () {
 			return {
@@ -27,7 +27,7 @@
 	}
 </script>
 <style scoped>
-.load-box{width:100%;text-align:center;position: fixed;bottom:0;z-index:10;}
+.load-box{width:100%;text-align:center;position: fixed;bottom:30%;z-index:1001;}
 .load-in{display:inline-table;padding:.1rem .2rem; border-radius:.25rem;background:#999;color:#fff;}
 .load-in img{float:left;width:.8rem;margin-right:.2rem;}
 </style>

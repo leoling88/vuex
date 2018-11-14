@@ -4,6 +4,9 @@
         <v-header :title="title" :menu-display="menuDisplay"></v-header>
         <v-loading :show="loadingShow"></v-loading> 
         <router-view></router-view>
+        <!--数据加载show-->
+        <v-loadup :loadupShow = "loadups"></v-loadup> 
+        <!--数据加载show  end-->  
     </div>
   </div>
 </template>
