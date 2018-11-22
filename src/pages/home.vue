@@ -1,11 +1,21 @@
 <template>
 <div>
 <!-- 	<v-leftbar :panellist="menulist" ></v-leftbar>
- -->	<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
-		<!--轮播--
-		<v-swiper :swiperLists = "imgLists" :swinperView="swinper"></v-swiper>
-		--轮播 end -->
-		<div class="home" @click="cc" >
+-->	<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
+		<!--轮播-->
+			<v-swiper :swiperLists = "imgLists" :swinperView="swinper"></v-swiper>
+		<!--轮播 end-->
+		<!--先择框-->
+		<v-select :selectDatas = "select1"  @optionclick="optionClick" @selectshow="selectShow" ></v-select>
+		<!--先择框 end-->
+
+
+
+		<div class="home" >
+
+		
+
+
 	哥是首页
 		</div>
 
@@ -34,16 +44,21 @@
 	import leftbar from '@/components/leftbar'
 	import alerts from '@/components/com/alert'	
 	import swipers from '@/components/com/swiper'
-	import loadup from '@/components/com/loadup'		
+	import select from '@/components/com/select'		
 	import {mapState, mapGetters, mapActions} from 'vuex'
 
 	export default{
 		name: 'home',
 		props: {
+
 			panellist: Array,
+
+			/*swipers*/
 			swiperLists: Array,
 			swinperView: Object,
-			loadupShow: Object,
+			/*下拉选择1*/
+			selectDatas: Object,
+
 		},
 		data () {
 			return {
@@ -82,6 +97,63 @@
 					promputup: false,
 					promputover: false,
 				},
+				select1:{     //下拉选择1
+					key:'',
+					value:'',
+					show: false,
+					lists:[
+						{
+							value:'11111',
+							key:'1'
+						},
+						{
+							value:'2222',
+							key:'2'
+						},
+						{
+							value:'333333',
+							key:'3'
+						},
+						{
+							value:'444444',
+							key:'4'
+						},
+						{
+							value:'55555555',
+							key:'5'
+						},
+						{
+							value:'6666666',
+							key:'6'
+						},
+						{
+							value:'77777777',
+							key:'7'
+						},
+						{
+							value:'8888888888888',
+							key:'8'
+						},
+						{
+							value:'999999999999999',
+							key:'9'
+						},
+						{
+							value:'AAAAAAAAA',
+							key:'10'
+						},
+						{
+							value:'BBBBBBBBB',
+							key:'11'
+						},
+						{
+							value:'CCCCCCCCCCCC',
+							key:'12'
+						}
+
+					]
+
+				},
 
 
 
@@ -91,7 +163,7 @@
 			'v-leftbar': leftbar,
 			'v-alert': alerts,
 			'v-swiper':swipers,
-			'v-loadup':loadup,
+			'v-select':select
 
 		},
 	    mounted(){
@@ -123,9 +195,12 @@
 				 //    }
 				 // },1000)
 			},
+			clickSelect () {
+				alert(index)
+			},
 			bannerLink () {
 				alert(index)
-		},
+			},
 	        openAlert(index){
 	        	
 	            this.alertVal.show = true;
@@ -135,8 +210,12 @@
 	            console.log('点击了取消');
 	        },
 	        clickConfirm(){
-	            console.log('点击了confirm');
+	            console.log('点击了确定');
 	        },
+	        optionClick() {},
+	        selectShow() {
+	        	this.select1.show = true
+	        }
 
 		}
 

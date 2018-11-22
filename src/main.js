@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './vuex/store'
+import './assets/css/common.css'//自定义页面样式
 
 Vue.config.productionTip = false
 
