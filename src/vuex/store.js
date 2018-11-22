@@ -6,6 +6,7 @@ import com from './module/com'
 import mine from './module/mine'
 import lists from './module/lists'
 import leftbar from './module/leftbar'
+import axios from 'axios'
 
 Vue.use(Vuex);
 export default new Vuex.Store({

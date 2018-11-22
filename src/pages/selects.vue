@@ -160,6 +160,7 @@
 			'v-address':address
 		},
 	    mounted(){
+	    	this.requireAdd ()
 
 	    },	
 		computed:{
@@ -174,6 +175,20 @@
 	        },
 	        selectAdd() {
 	        	this.select3.show = true
+	        },
+	        requireAdd () {
+
+
+				axios.get('assets/js/chinaAdd.json')
+				  .then(function (response) {
+				    console.log(response);
+				  })
+				  .catch(function (error) {
+				    console.log(error);
+				});
+
+
+
 	        }
 		}
 
