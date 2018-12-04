@@ -131,4 +131,4 @@ a:link,a:active,a:visited,a:hover {
 .cor-black{color:#000;}
 .over-hid{overflow:hidden;}
 /*通用icon*/
-.icon-arrow-right{color:#888;position:absolute;width:.7rem;height:.7rem;border-bottom:solid 1px currentColor;border-left:solid 1px currentColor;-webkit-transform:rotate(-135deg);transform:rotate(-135deg)}
+.icon-arrow-right{color:#888;position:absolute;width:.6rem;height:.6rem;border-bottom:solid 1px currentColor;border-left:solid 1px currentColor;-webkit-transform:rotate(-135deg);transform:rotate(-135deg)}

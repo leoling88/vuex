@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import store from './vuex/store'
 import './assets/css/common.css'//自定义页面样式
-import axios from 'axios'
+import './assets/css/select.css'//自定义页面样式
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -1,4 +1,4 @@
-import { getTest } from '../https/index.js'
+import { getTest } from '../../https/axios.js'
 const state = {
 	lists_data:[
 		{

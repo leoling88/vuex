@@ -23,6 +23,7 @@
 </template>
 <script>
 	import select from '@/components/com/select'
+	import select2 from '@/components/com/select2'
 	import address from '@/components/com/selectAdd'		
 	import {mapState, mapGetters, mapActions} from 'vuex'
 
@@ -179,15 +180,17 @@
 	        requireAdd () {
 
 
-				axios.get('assets/js/chinaAdd.json')
-				  .then(function (response) {
-				    console.log(response);
-				  })
-				  .catch(function (error) {
-				    console.log(error);
-				});
+        https.api.test().then(res => {
+          const _data = res.data.obj
+          this.$store.commit('UPDATE_LOADING', false);
+          if(res.data.success) {
 
-
+          }else{
+            this.$store.commit('SHOWTOAST', '数据查询不成功!')
+          }
+        }).catch(() => {
+          this.$store.commit('SHOWTOAST', '网络异常!')
+        }) 
 
 	        }
 		}
