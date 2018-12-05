@@ -6,9 +6,9 @@
 	</v-select>
 	<!--先择框1 end-->
 	<!--先择框2-->
-	<v-select :selectDatas = "select2"  @selectshow="selectZJ" >
+	<v-select2 :selectDatas = "select2"  @selectshow="selectZJ" >
 		<span slot="label">选择证件类型</span>
-	</v-select>
+	</v-select2>
 	<!--先择框2 end-->
 	<!--先择框3-->
 	<v-address :selectDatas = "select3"  @selectshow="selectAdd" >
@@ -158,6 +158,7 @@
 		},
 		components:{
 			'v-select':select,
+			'v-select2':select2,
 			'v-address':address
 		},
 	    mounted(){

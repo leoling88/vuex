@@ -7,11 +7,12 @@
 			
 		</div>
 		<div class="select-bg" v-show="selectDatas.show"></div>
-		<div class="select-show"  v-if="selectDatas.show">
+		<div class="select-show2"  v-if="selectDatas.show">
 			<div class="title">选择 <span class="fr colorBlack" @click="selectClose">关闭</span></div>
 			<div class="selcet">
+				<div class="selcet-hover"><i></i></div>
 				<ul>
-					<li v-for="item in selectDatas.lists"  @click="optionClick(item.key, item.value)" :class="{hover:selectDatas.hover == item.key}"><span class="icon"><i></i></span><span v-text="item.value"></span></li>
+					<li v-for="item in selectDatas.lists"  @click="optionClick(item.key, item.value)" :class="{hover:selectDatas.hover == item.key}"><span v-text="item.value"></span></li>
 				</ul>
 			</div>
 		</div>
