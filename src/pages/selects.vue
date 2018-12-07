@@ -32,6 +32,7 @@
 		props: {
 			/*下拉选择1*/
 			selectDatas: Object,
+			scroll: Object
 
 		},
 		data () {
@@ -75,7 +76,12 @@
 							value:'营业执照',
 							key:'4'
 						},
-					]
+					],
+					scrollTop:0,   //滚动条位
+					startY:'',    //X轴初始位置
+					endY:'',    //X轴结束位置
+					unit:'',
+					vernierTop:'' ,//游标位置
 				},
 				select3:{     //下拉选择2
 					key:1,
@@ -162,7 +168,8 @@
 			'v-address':address
 		},
 	    mounted(){
-	    	this.requireAdd ()
+	    	// this.requireAdd ()
+
 
 	    },	
 		computed:{
@@ -174,6 +181,7 @@
 	        },
 	        selectZJ() {
 	        	this.select2.show = true
+
 	        },
 	        selectAdd() {
 	        	this.select3.show = true

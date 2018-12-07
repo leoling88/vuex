@@ -27,5 +27,5 @@
 .select-show2 .selcet li.hover .icon i{background:#ff8a00;}
 .select-show2 .selcet .ul0{max-height:14rem;overflow-y: auto;}
 .select-show2 .selcet-hover{width:98%;left:2;top:5rem; position: absolute;}
-.select-show2 .selcet-hover i{display:block;width:100%;border:.0rem solid #000;height:2rem;}
+.select-show2 .selcet-hover i{display:block;width:96%;height:2rem;margin:0 auto;border:.05rem solid #000;border-radius:.3rem;}
 
