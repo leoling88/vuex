@@ -76,11 +76,46 @@
 							value:'营业执照',
 							key:'4'
 						},
+						{
+							value:'居民身份证',
+							key:'1',
+						},
+						{
+							value:'护照本',
+							key:'2'
+						},
+						{
+							value:'部队军人证件',
+							key:'3'
+						},	
+						{
+							value:'营业执照',
+							key:'4'
+						},
+						{
+							value:'居民身份证',
+							key:'1',
+						},
+						{
+							value:'护照本',
+							key:'2'
+						},
+						{
+							value:'部队军人证件',
+							key:'3'
+						},	
+						{
+							value:'营业执照',
+							key:'4'
+						},
+
+
+						
 					],
 					scrollTop:0,   //滚动条位
 					startY:'',    //X轴初始位置
 					endY:'',    //X轴结束位置
-					unit:'',
+					hover:'',
 					vernierTop:'' ,//游标位置
 				},
 				select3:{     //下拉选择2
