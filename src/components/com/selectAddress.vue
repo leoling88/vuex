@@ -7,17 +7,24 @@
 			
 		</div>
 		<div class="select-bg" v-show="selectDatas.show"></div>
-		<div class="select-show2"  v-if="selectDatas.show">
+		<div class="select-show3"  v-if="selectDatas.show">
 			<div class="title">选择 <span class="fr colorBlack" @click="selectClose">关闭</span></div>
-			<div class="con"  @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd" >
+			<div class="con">
 				<div class="bgup"></div>
 				<div class="bgdown"></div>
 				<div class="selcet">
 					<div class="selcet-hover" ref="vernier" ><i></i></div>
-					<ul  :style="{'transform': 'translate3d(0,'+selectDatas.scrollTop +'px, 0)',}" ref="selcetHieght" >
-						<li v-for="(item, index) in selectDatas.lists"  @click="optionClick(item.key, item.value)" :class="{hover:selectDatas.hover == index}"><span v-text="item.value" ></span></li>
-					</ul>
+					<div class="wid33 fl pos_rel"  @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd" >
+						<ul  :style="{'transform': 'translate3d(0,'+selectDatas.scrollTop +'px, 0)',}" ref="selcetHieght" >
+							<li v-for="(item, index) in selectDatas.lists.list1"  @click="optionClick(item.key, item.value)" :class="{hover:selectDatas.hover == index}"><span v-text="item.value" ></span></li>
+						</ul>						
+					</div>
+
 				</div>
+
+
+
+
 			</div>
 
 		</div>
