@@ -26,6 +26,7 @@
 	import select2 from '@/components/com/select2'
 	import address from '@/components/com/selectAddress'		
 	import {mapState, mapGetters, mapActions} from 'vuex'
+	import api from '@/https/index'	
 
 	export default{
 		name: 'selects',
@@ -87,47 +88,36 @@
 					vernierTop:'' ,//游标位置
 				},
 				select3:{     //下拉选择2
-					key0:1,
-					value0:'居民身份证',
-					hover0: 1,
 					key1:1,
-					value1:'居民身份证',
+					value1:'',
 					hover1: 1,
 					key2:1,
-					value2:'居民身份证',
-					show: false,
+					value2:'',
 					hover2: 1,
+					key3:1,
+					value4:'',
+					show: false,
+					hover3: 1,
 
-					scrollTop0:0,   //滚动条位
-					startY0:'',    //X轴初始位置
-					endY0:'',    //X轴结束位置
-					hover0:'',
-					vernierTop0:'',//游标位置
 					scrollTop1:0,   //滚动条位
 					startY1:'',    //X轴初始位置
 					endY1:'',    //X轴结束位置
 					hover1:'',
-					vernierTop1:'' ,//游标位置
+					vernierTop2:'',//游标位置
 					scrollTop2:0,   //滚动条位
 					startY2:'',    //X轴初始位置
 					endY2:'',    //X轴结束位置
 					hover2:'',
-					vernierTop2:'' ,//游标位置
-
-					lists:{
-						list1:[
-					
-						],
-						list2:[
-
-						],
-						list3:[
-
-						],
-
-					}
-
-				},				
+					vernierTop3:'' ,//游标位置
+					scrollTop3:0,   //滚动条位
+					startY3:'',    //X轴初始位置
+					endY3:'',    //X轴结束位置
+					hover3:'',
+					vernierTop:'' ,//游标位置
+					touchhover: '',  //触屏位置1
+					lists:[],  
+				},
+				chinaAdd3list:[],//地址总数据				
 			}
 		},
 		components:{
@@ -136,7 +126,8 @@
 			'v-address':address
 		},
 	    mounted(){
-	    	// this.requireAdd ()
+	    	this.requireAdd3()
+	    	
 
 
 	    },	
@@ -154,22 +145,16 @@
 	        selectAdd() {
 	        	this.select3.show = true
 	        },
-	        requireAdd () {
+	        requireAdd3 () {     //获取中国省市区地址表
+		        api.getChianAddress({dataType: "json",}).then(res => {
+		        	let data = res.data
+		        	console.log('res')
+		        	this.chinaAdd3list = res.data
+		        	this.select3.lists.list1 = this.chinaAdd3list
+		        }).catch((res) => {
+		        });
+	        },
 
-
-        https.api.test().then(res => {
-          const _data = res.data.obj
-          this.$store.commit('UPDATE_LOADING', false);
-          if(res.data.success) {
-
-          }else{
-            this.$store.commit('SHOWTOAST', '数据查询不成功!')
-          }
-        }).catch(() => {
-          this.$store.commit('SHOWTOAST', '网络异常!')
-        }) 
-
-	        }
 		}
 
 

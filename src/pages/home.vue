@@ -1,4 +1,4 @@
-<template>
+                                                        <template>
 <div>
 <!-- 	<v-leftbar :panellist="menulist" ></v-leftbar>
 -->	<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">

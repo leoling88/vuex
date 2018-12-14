@@ -15,7 +15,7 @@
 				<div class="selcet">
 					<div class="selcet-hover" ref="vernier" ><i></i></div>
 					<ul  :style="{'transform': 'translate3d(0,'+selectDatas.scrollTop +'px, 0)',}" ref="selcetHieght" >
-						<li v-for="(item, index) in selectDatas.lists"  @click="optionClick(item.key, item.value)" :class="{hover:selectDatas.hover == index}"><span v-text="item.value" ></span></li>
+						<li v-for="(item, index) in selectDatas.lists"  :class="{hover:selectDatas.hover == index}"><span v-text="item.value" ></span></li>
 					</ul>
 				</div>
 			</div>
@@ -47,12 +47,7 @@
 		computed: {
 		},
 		methods: {
-			optionClick (key, value) {
-				this.selectDatas.hover = key
-				this.selectDatas.key = key
-				this.selectDatas.value = value
-	            this.$emit('optionclick');
-			},
+
 			selectShow () {
 	            this.$emit('selectshow');
 				

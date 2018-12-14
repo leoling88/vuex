@@ -12,11 +12,12 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       /*--跨域--- */
-      '/api': {  //使用"/api"来代替"http://f.apiplus.c" 
-        target: 'http://localhost:8080/', //源地址 http://happymmall.com
+      '/api': { 
+       target: 'http://localhost:8080',
+       // target: 'http://laisuia.createt.cn:8089',
         changeOrigin: true, //改变源 
         pathRewrite: { 
-          '^/api': '' //路径重写 
+          '^/api': '/api' //路径重写 
           } 
       } 
     
