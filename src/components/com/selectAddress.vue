@@ -2,12 +2,12 @@
 	<div class="select-1">
 		<div class="select-1-tab " @click="selectShow">
 			<slot name="label">请选择</slot>
-			<span class="fr icon-1"><i class="icon-arrow-right"></i></span>
+			<span class="fr icon-1" ><i class="icon-arrow-right" ></i></span>
 			<span v-text="selectDatas.value1 + selectDatas.value2 + selectDatas.value3" class="fr value cor-black" ></span>
 			
 		</div>
 		<div class="select-bg" v-show="selectDatas.show"></div>
-		<div class="select-show3"  v-if="selectDatas.show">
+		<div class="select-show3" :class="{'show':selectDatas.show}">
 			<div class="title">选择 <span class="fr colorBlack" @click="selectClose">关闭</span></div>
 			<div class="con">
 				<div class="bgup"></div>
@@ -21,8 +21,8 @@
 				</div>
 
 				<div class="selcet">
-					<div class="selcet-hover" ref="vernier" ><i></i></div>
-					<ul  :style="{'transform': 'translate3d(0,'+selectDatas.scrollTop1 +'px, 0)',}" ref="selcetHieght1" class="left0" >
+					<div class="selcet-hover" ref="vernier" ><i ></i></div>
+					<ul  :style="{'transform': 'translate3d(0,'+selectDatas.scrollTop1 +'px, 0)'}" ref="selcetHieght1" class="left0" >
 						<li v-for="(item, index) in selectDatas.lists.list1"  :class="{hover:selectDatas.hover == index}"><span v-text="item.name" class="value" ></span></li>
 					</ul>						
 					<ul  :style="{'transform': 'translate3d(0,'+selectDatas.scrollTop2 +'px, 0)',}" ref="selcetHieght2"  class="left33" >
@@ -76,6 +76,8 @@
 
 			selectShow () {
 	            this.$emit('selectshow');
+
+
 				
 			},
 			selectClose () {
@@ -183,27 +185,25 @@
 		    			this.selectDatas.key3 = this.selectDatas.lists.list3[_dist].code  //选中赋值						
 					}
 
-				
-
-
 		    },
 	        getaddressSQ(code1, code2) { //获取城市
 	        	this.selectDatas.lists.list2 = this.selectDatas.lists.list1[code1].children
 	        	this.getaddressQX(code2)
 	        	this.selectDatas.scrollTop2 = 0   //初始化位置
-
-	        	
 	        },
 	        getaddressQX(code) { //获取区县
-	        	this.selectDatas.lists.list3 = this.selectDatas.lists.list2[code].children   
+	        	this.selectDatas.lists.list3 = this.selectDatas.lists.list2[code].children
 	        	this.selectDatas.scrollTop3 = 0   //初始化位置
+
 	        },
-
-
 
 		},
 
-	    mounted(){
+	    mounted(){		        	
+
+        	this.selectDatas.scrollTop1 = -(this.selectDatas.hover1 * this.$refs.vernier.offsetHeight + 5)    //默认位置
+        	this.getaddressSQ(18, 0)
+
 	    },
 	    watch:{
 	    },

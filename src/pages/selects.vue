@@ -88,31 +88,28 @@
 					vernierTop:'' ,//游标位置
 				},
 				select3:{     //下拉选择2
-					key1:1,
-					value1:'',
-					hover1: 1,
-					key2:1,
-					value2:'',
-					hover2: 1,
-					key3:1,
-					value4:'',
+					key1:'44',
+					value1:'广东省',
+					key2:'4401',
+					value2:'广州市',
+					key3:'440103',
+					value3:'荔湾区',
 					show: false,
-					hover3: 1,
 
-					scrollTop1:0,   //滚动条位
+					scrollTop1:'',   //滚动条位
 					startY1:'',    //X轴初始位置
 					endY1:'',    //X轴结束位置
-					hover1:'',
+					hover1:'18',
 					vernierTop2:'',//游标位置
 					scrollTop2:0,   //滚动条位
 					startY2:'',    //X轴初始位置
 					endY2:'',    //X轴结束位置
-					hover2:'',
+					hover2:'0',
 					vernierTop3:'' ,//游标位置
 					scrollTop3:0,   //滚动条位
 					startY3:'',    //X轴初始位置
 					endY3:'',    //X轴结束位置
-					hover3:'',
+					hover3:'0',
 					vernierTop:'' ,//游标位置
 					touchhover: '',  //触屏位置1
 					lists:[],  
@@ -144,6 +141,7 @@
 	        },
 	        selectAdd() {
 	        	this.select3.show = true
+
 	        },
 	        requireAdd3 () {     //获取中国省市区地址表
 		        api.getChianAddress({dataType: "json",}).then(res => {
@@ -151,6 +149,12 @@
 		        	console.log('res')
 		        	this.chinaAdd3list = res.data
 		        	this.select3.lists.list1 = this.chinaAdd3list
+		        	this.select3.lists.list2 = this.select3.lists.list1[18].children
+		        	this.select3.lists.list3 = this.select3.lists.list2[0].children
+
+
+		        	
+
 		        }).catch((res) => {
 		        });
 	        },
