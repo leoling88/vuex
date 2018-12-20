@@ -4,7 +4,6 @@
 			<slot name="label">请选择</slot>
 			<span class="fr icon-1" ><i class="icon-arrow-right" ></i></span>
 			<span v-text="selectDatas.value1 + selectDatas.value2 + selectDatas.value3" class="fr value cor-black" ></span>
-			
 		</div>
 		<div class="select-bg" v-show="selectDatas.show"></div>
 		<div class="select-show3" :class="{'show':selectDatas.show}">
@@ -12,14 +11,12 @@
 			<div class="con">
 				<div class="bgup"></div>
 				<div class="bgdown"></div>
-				
 				<div class="selcetbox left0"  @touchstart="touchStart($event, 1)" @touchmove="touchMove" @touchend="touchEnd">   <!--//滑动区1-->
 				</div>
 				<div class="selcetbox left33"  @touchstart="touchStart($event, 2)" @touchmove="touchMove" @touchend="touchEnd">   <!--//滑动区2-->
 				</div>
 				<div class="selcetbox left66"  @touchstart="touchStart($event, 3)" @touchmove="touchMove" @touchend="touchEnd">   <!--//滑动区3-->
 				</div>
-
 				<div class="selcet">
 					<div class="selcet-hover" ref="vernier" ><i ></i></div>
 					<ul  :style="{'transform': 'translate3d(0,'+selectDatas.scrollTop1 +'px, 0)'}" ref="selcetHieght1" class="left0" >
@@ -28,16 +25,10 @@
 					<ul  :style="{'transform': 'translate3d(0,'+selectDatas.scrollTop2 +'px, 0)',}" ref="selcetHieght2"  class="left33" >
 						<li v-for="(item, index) in selectDatas.lists.list2"   :class="{hover:selectDatas.hover == index}"><span v-text="item.name" class="value"></span></li>
 					</ul>						
-
 					<ul  :style="{'transform': 'translate3d(0,'+selectDatas.scrollTop3 +'px, 0)',}" ref="selcetHieght3"  class="left66">
 						<li v-for="(item, index) in selectDatas.lists.list3"  :class="{hover:selectDatas.hover == index}"><span v-text="item.name" class="value"></span></li>
 					</ul>						
-
 				</div>
-
-
-
-
 			</div>
 
 		</div>
@@ -73,16 +64,11 @@
 		computed: {
 		},
 		methods: {
-
 			selectShow () {
 	            this.$emit('selectshow');
-
-
-				
 			},
 			selectClose () {
 				this.selectDatas.show = false
-
 			},
 
 		    touchStart(e, index) {
@@ -113,7 +99,6 @@
 		    touchEnd() {
 		    	let dist =  Math.abs(this.selectDatas.endY - this.selectDatas.startY)
 		    	let _dist
-
 					if(this.selectDatas.touchhover == 1){    //选择省份直辖市
 						dist = dist/_pageHeight1
 						if(this.selectDatas.endY > this.selectDatas.startY && this.selectDatas.scrollTop1 < 0){
@@ -136,6 +121,11 @@
 		    			this.selectDatas.hover1 =  _dist     //选中定位
 		    			this.selectDatas.value1 = this.selectDatas.lists.list1[_dist].name  //选中赋值
 		    			this.selectDatas.key1 = this.selectDatas.lists.list1[_dist].code  //选中赋值
+		    			this.selectDatas.value2 = this.selectDatas.lists.list1[_dist].children[0].name  //选中赋值
+		    			this.selectDatas.key2 = this.selectDatas.lists.list1[_dist].children[0].code  //
+		    			this.selectDatas.value3 = this.selectDatas.lists.list1[_dist].children[0].children[0].name  //选中赋值
+		    			this.selectDatas.key3 = this.selectDatas.lists.list1[_dist].children[0].children[0].code  //		    			
+
 		    			this.getaddressSQ(_dist, '0') 
 
 					}
@@ -161,6 +151,9 @@
 
 		    			this.selectDatas.value2 = this.selectDatas.lists.list2[_dist].name  //选中赋值
 		    			this.selectDatas.key2 = this.selectDatas.lists.list2[_dist].code  //选中赋值		
+		    			this.selectDatas.value3 = this.selectDatas.lists.list2[_dist].children[0].name  //选中赋值
+		    			this.selectDatas.key3 = this.selectDatas.lists.list2[_dist].children[0].code  //
+
 		    			this.getaddressQX(_dist) 				
 					}
 					else if(this.selectDatas.touchhover == 3){ //选择街镇
@@ -194,22 +187,29 @@
 	        getaddressQX(code) { //获取区县
 	        	this.selectDatas.lists.list3 = this.selectDatas.lists.list2[code].children
 	        	this.selectDatas.scrollTop3 = 0   //初始化位置
-
 	        },
 
 		},
-
 	    mounted(){		        	
-
         	this.selectDatas.scrollTop1 = -(this.selectDatas.hover1 * this.$refs.vernier.offsetHeight + 5)    //默认位置
         	this.getaddressSQ(18, 0)
-
 	    },
 	    watch:{
-	    },
+
+
+
+		'selectDatas': {
+		    handler(newName, oldName) {
+		      console.log(this.selectDatas)
+		    },
+		    immediate: true,
+		    deep: true
+		}
+
+
+		},
 
 	}
 </script>
 <style scoped>
-
 </style>

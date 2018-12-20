@@ -12,8 +12,9 @@
 	<!--先择框2 end-->
 	<!--先择框3-->
 	<v-address :selectDatas = "select3"  @selectshow="selectAdd" >
-		<span slot="label">选择地址</span>
+		<span slot="label">三级联动</span>
 	</v-address>
+	<div class="box-1">{{select3.key1}} {{select3.key2}}{{select3.key3}}   {{select3.value1}}{{select3.value2}} {{select3.value3}}</div>
 	<!--先择框3 end-->
 
 </div>
@@ -167,4 +168,6 @@
 </script>
 <style >
 @import "../assets/css/select.css";
+.box-1{padding:.1rem;text-align:right;font-size:.8rem;color:#ccc;}
+
 </style>
