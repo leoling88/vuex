@@ -11,6 +11,10 @@ export default {
     return axios.get('../static/js/chinaAdd3.json')
   },
 
+  getSwiper() {       //省市、直辖市
+    return axios.post('http://yxrh.createt.cn:8091/combile/wxInterface/informationBanner/getBannerList')
+  },
+
 
 
 

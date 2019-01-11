@@ -46,6 +46,7 @@
 	import swipers from '@/components/com/swiper'
 	import select from '@/components/com/select'		
 	import {mapState, mapGetters, mapActions} from 'vuex'
+  import https from '@/https/index'
 
 	export default{
 		name: 'home',
@@ -86,12 +87,7 @@
 					pageX:'1.5',
 
 				},
-				imgLists:[      //数据
-					{img:'http://img2.imgtn.bdimg.com/it/u=2331105056,4165068436&fm=26&gp=0.jpg',title:'000',url:'page/'},
-					{img:'http://img2.imgtn.bdimg.com/it/u=3826074173,3325012237&fm=26&gp=0.jpg',title:'111',url:'http://www.sina.com'},
-					{img:'http://img3.imgtn.bdimg.com/it/u=3197969683,3524917104&fm=200&gp=0.jpg',title:'2222',url:'http://www.qq.com'},
-					{img:'http://img3.imgtn.bdimg.com/it/u=553010038,2994934751&fm=200&gp=0.jpg',title:'3333',url:'http://www.qq.com'},
-				],
+				imgLists:[],
 				loadups:{     //加载状态
 					loading: false,
 					promputup: false,
@@ -167,8 +163,10 @@
 
 		},
 	    mounted(){
+	    	this.requireSwiperDatas()
 	    	const _this = this
 		    window.onresize = function temp() {
+		    	alert('dd')
 		    	_this.loadups.loading = true
 		    	_this.swinper.viewX = document.body.clientWidth
 		    	console.log('父组件发生变化===>' + _this.swinper.viewX)
@@ -183,6 +181,20 @@
 
 		},
 		methods:{
+
+	        requireSwiperDatas () {    
+		        https.getSwiper().then(res => {
+		        	let _data = res.data
+		        	this.imgLists = _data.data
+		        	alert(_data.data[0].imageUrl)
+
+		        	
+
+		        }).catch((res) => {
+		        });
+	        },
+
+
 			cc() {
 				this.alertVal.show = true
 				 // this.$store.commit('COM_LOADING_STATUS', true);

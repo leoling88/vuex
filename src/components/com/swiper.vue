@@ -3,7 +3,7 @@
 		<div class="swipe-box" :style="{'width':swinperView.ulWidth + 'px','transform': 'translate3d('+swinperView.left +'px, 0, 0)','background':'#000'}">
 			<div class="lists">
 				<ul >
-					<li v-for="(item, index) in swiperLists" :style="{'width':swinperView.width + 'px'}" ><router-link :to="item.url"><img :src="item.img" alt=""/></router-link></li> <!-- @click.stop="clickView(index)">-->
+					<li v-for="(item, index) in swiperLists" :style="{'width':swinperView.width + 'px'}" ><router-link to=""><img :src="item.imageUrl" alt=""/></router-link></li> <!-- @click.stop="clickView(index)">-->
 				</ul>
 			</div>
 		</div>
@@ -37,21 +37,25 @@
 		},
 		computed: {
 		},
-		created:function(){
+		mounted(){
 			this.swinperShow()
 		    this.touch = {}
 		},			
 		methods: {
 	        swinperShow () {
-				swinperW =  this.swinperView.viewX         //视图偏移位置
-				pageX = this.swinperView.pageX             //游标偏移位置
-				page = this.swiperLists.length             //列表长度
+
 				let _this = this
 				let direction = 0
-				this.swinperView.width = swinperW
-				this.swinperView.ulWidth = page * swinperW
-				this.swinperView.title = _this.swiperLists[0].title
+
 				this.timer=setInterval(function(){
+					swinperW = _this.swinperView.viewX         //视图偏移位置
+					pageX = _this.swinperView.pageX             //游标偏移位置
+					page = _this.swiperLists.length             //列表长度
+					_this.swinperView.width = swinperW
+					_this.swinperView.ulWidth = page * swinperW
+					_this.swinperView.title = _this.swiperLists[0].title
+
+
 					if(direction == 0 ) {
 						if(num < (page - 1)){
 							console.log(num + '--->')
@@ -130,6 +134,7 @@
 		},
 		watch: {
             'swinperView.viewX':function(oldval, val){
+
             	if(oldval != val) {
 					swinperW =  this.swinperView.viewX
 					this.swinperView.width = swinperW

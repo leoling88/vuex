@@ -14,7 +14,7 @@
 	<v-address :selectDatas = "select3"  @selectshow="selectAdd" >
 		<span slot="label">三级联动</span>
 	</v-address>
-	<div class="box-1">{{select3.key1}} {{select3.key2}}{{select3.key3}}   {{select3.value1}}{{select3.value2}} {{select3.value3}}</div>
+	<div class="box-1">{{select3.key1}}{{select3.key2}}{{select3.key3}}   {{select3.value1}}{{select3.value2}} {{select3.value3}}</div>
 	<!--先择框3 end-->
 
 </div>
