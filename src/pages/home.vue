@@ -11,7 +11,7 @@
 
 
 
-		<div class="home" >
+		<div class="home"  @click="cc">
 
 		
 

@@ -26,7 +26,7 @@
 var v_h = document.documentElement.clientHeight || document.body.clientHeight;
 //var w = document.documentElement.scrollWidth || document.body.scrollWidth;
 var b_h = document.documentElement.scrollHeight || document.body.scrollHeight;
-import loadIcon from '@/assets/load.gif'
+// import loadIcon from '@/assets/load.gif'
 export default {
   name: 'myScroll',
   data () {
@@ -44,7 +44,7 @@ export default {
       pageNum:false,
       loadOff:false,
       loadreFresh:false,
-      LoadIcon:loadIcon
+      LoadIcon:''
     }
   },
   created:function(){
@@ -72,28 +72,26 @@ export default {
     touchStart(e){ //触摸事件
         this.pageX = e.targetTouches[0].pageX
         this.pageY = e.targetTouches[0].pageY
-        // console.log("X:" + this.pageX +"||" +"Y:" + this.pageY)
+        console.log("X:" + this.pageX +"||" +"Y:" + this.pageY)
         this.handleScroll()
          
     },
     touchMove(e){ //触摸滑动事件
-        //console.log("滚动条位置:" + this.scrollPosition)
+        console.log("滚动条位置:" + this.scrollPosition)
         if(e.targetTouches[0].pageY > this.pageY){ //向下滑动
           this.loadreFresh = true
           if(this.scrollTop == 0 && e.targetTouches[0].pageY - this.pageY > 80){
             this.aspect = 2
             this.viewShow = false
-
-
-            // console.log("下拉刷新")            
+            console.log("下拉刷新")            
           }
-          // console.log("向下滑动")   
+          console.log("向下滑动")   
          
         }else if( this.pageY - e.targetTouches[0].pageY > 80){ //向上滑动
           if((this.myScrollH + this.scrollTop + 50) > this.myViewH){   
             this.aspect = 1
           }
-          //console.log("向上滑动" + (this.pageY - e.targetTouches[0].pageY) )
+          console.log("向上滑动" + (this.pageY - e.targetTouches[0].pageY) )
         }
     },
     touchEnd(e){
