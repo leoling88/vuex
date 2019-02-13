@@ -49,13 +49,26 @@ export default {
     }
   },
   created:function(){
+     this.HelloAxios()   //加载数据
   },
   methods: {
    /*=====跨域======= */
 
     HelloAxios(){
-      this.$parent.listDatas();
+      //var _this = this;
+      this.$http({
+        method:'get',
+        baseURL: '',        //baseURL: '/api'
+        url:'static/goodsdata.json',     //'static/goodsdata.json'
+      }).then((res) => {
+        this.newsHot = res.data.listshot;
+        this.pageNum = true   //是否有更多数据加载
+        this.viewShow = true
 
+        // console.log(res.data.listshot)
+      }).catch(function(err){
+        console.log(err)
+      })
     },
     touchStart(e){ //触摸事件
         this.pageX = e.targetTouches[0].pageX
@@ -87,12 +100,21 @@ export default {
             this.loadMore = false    //隐藏"加载更多"提示
             this.loadIn = true    //显示"加载中..."提示
             this.aspect = 0
-            this.$parent.listDatas();
 
-            this.loadIn = false      //隐藏"加载中..."提示
-            this.loadMore = true     //显示"加载更多"提示
-            this.pageNum = false     //是否有更多数据加载
-
+            this.$http({
+              method:'get',
+              baseURL: '',        //baseURL: '/api'
+              url:'static/goodsdata.json'     //'static/goodsdata.json'
+            }).then((res) => {
+              for(var i = 0; i < res.data.listshot2.length; i ++){
+                this.newsHot.push(res.data.listshot2[i])
+                this.loadIn = false      //隐藏"加载中..."提示
+                this.loadMore = true     //显示"加载更多"提示
+                this.pageNum = false     //是否有更多数据加载
+              }
+            }).catch(function(err){
+              console.log(err)
+            })
 
         }else{
           this.pageNum = false
@@ -102,7 +124,7 @@ export default {
 
         }        
       }else if(this.aspect == 2){
-        this.$parent.listDatas();
+        this.HelloAxios()
         this.pageNum = false
         this.loadMore = false
         this.loadOff = false

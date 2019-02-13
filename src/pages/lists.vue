@@ -1,7 +1,15 @@
 <template>
 <div class="scroll-wrap">
 
-	<v-srcolly :panellist="listsdata"></v-srcolly>
+	<v-srcolly>
+      <ul slot='lists'>
+        <li v-for="item in newsHot" :class="{'type-2': item.otype === '3' , 'type-1': item.otype === '1'}">
+            <h2 v-text="item.name"></h2>
+            <span class="img" ><img :src="_item" alt="" v-for="_item in item.img"></span>
+            <span class="about" v-text="item.text"></span>
+        </li>
+      </ul>
+	</v-srcolly>
 </div>
 
 
@@ -9,13 +17,13 @@
 <script>
 
 import {mapGetters, mapActions} from 'vuex'
-
+import api from '@/https/index'	
 import srcolly from  '@/components/com/srcolly'
 export default {
 
 	data() {
 		return {
-			listsdata:[]
+			newsHot:[]
 
 		}
 	},
@@ -30,7 +38,16 @@ export default {
 	computed:{
 	},
 	methods:{
-		...mapActions(['onTouchStart','onTouchMove','onTouchEnd'])
+		...mapActions(['onTouchStart','onTouchMove','onTouchEnd']),
+		listDatas(){
+	        api.requestTestData().then(res => {
+alert()
+	        	let data = res.data
+	        	console.log('res')
+	        }).catch((res) => {
+	        });
+
+		}
 	}
 }
 
