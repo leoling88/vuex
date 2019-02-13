@@ -41,9 +41,8 @@ export default {
 		...mapActions(['onTouchStart','onTouchMove','onTouchEnd']),
 		listDatas(){
 	        api.requestTestData().then(res => {
-alert()
 	        	let data = res.data
-	        	console.log('res')
+	        	this.newsHot = data.listshot
 	        }).catch((res) => {
 	        });
 
