@@ -1,26 +1,14 @@
 <template>
-
-  <div class="sroll-wrap news-wrap" id="ddd" res="myScroll"  :style="{height: myScrollH + 'px'}" @touchstart="touchStart($event)"  @touchmove="touchMove($event)"   @touchend="touchEnd($event)" >
-    <div class="sroll-more" v-if="loadreFresh">下拉刷新数据</div>
+  <div class="sroll-wrap news-wrap"  res="myScroll"  :style="{height: myScrollH + 'px'}" @touchstart="touchStart($event)"  @touchmove="touchMove($event)"   @touchend="touchEnd($event)" >
+    <div class="sroll-more" v-if="scrolly.loadreFresh">下拉刷新数据</div>
     <div class="sroll-wrap-box news-list-hot srcoll-show" >
       <slot name="lists"></slot>
-<!--       <ul>
-        <li v-for="item in newsHot" :class="{'type-2': item.otype === '3' , 'type-1': item.otype === '1'}">
-            <h2 v-text="item.name"></h2>
-            <span class="img" ><img :src="_item" alt="" v-for="_item in item.img"></span>
-            <span class="about" v-text="item.text"></span>
-        </li>
-      </ul> -->
     </div>
-
-    <div v-if="loadMore" class="sroll-more">上拉加载更多数据</div>
-    <div v-if="loadIn" class="sroll-load-style" ><img :src="LoadIcon" alt=""> 努力加载中...</div>
-    <div v-if="loadOff" class="sroll-more">没有更多数据</div>
-
-    
+    <div v-if="scrolly.loadMore" class="sroll-more">上拉加载更多数据</div>
+    <div v-if="scrolly.loadIn" class="sroll-load-style" ><img :src="LoadIcon" alt=""> 努力加载中...</div>
+    <div v-if="scrolly.loadOff" class="sroll-more">没有更多数据</div>
   </div>
 </template>
-
 <script>
 
 //var w = document.documentElement.clientWidth || document.body.clientWidth;
@@ -30,21 +18,17 @@ var b_h = document.documentElement.scrollHeight || document.body.scrollHeight;
 // import loadIcon from '@/assets/load.gif'
 export default {
   name: 'myScroll',
+  props: {
+    scrolly: Array
+  },
   data () {
     return {
-      newsHot:[],
       pageX:0,
       pageY:0,
       myScroll:null,
       scrollTop:0,
-      aspect: 0,  //1向上，2向下
       myScrollH:0,     //可视框高度
       myViewH:0,
-      loadMore: true,
-      loadIn:false,
-      pageNum:false,
-      loadOff:false,
-      loadreFresh:false,
       LoadIcon:''
     }
   },
@@ -68,47 +52,42 @@ export default {
         if(e.targetTouches[0].pageY > this.pageY){ //向下滑动
           this.loadreFresh = true
           if(this.scrollTop == 0 && e.targetTouches[0].pageY - this.pageY > 80){
-            this.aspect = 2
-            this.viewShow = false
+            this.scrolly.aspect = 2
+            this.scrolly.viewShow = false
             console.log("下拉刷新")            
           }
           console.log("向下滑动")   
          
         }else if( this.pageY - e.targetTouches[0].pageY > 80){ //向上滑动
           if((this.myScrollH + this.scrollTop + 50) > this.myViewH){   
-            this.aspect = 1
+            this.scrolly.aspect = 1
           }
           console.log("向上滑动" + (this.pageY - e.targetTouches[0].pageY) )
         }
     },
     touchEnd(e){
-      if(this.aspect == 1){
-        if(this.pageNum == true){  //追加数据
-            this.loadMore = false    //隐藏"加载更多"提示
-            this.loadIn = true    //显示"加载中..."提示
-            this.aspect = 0
-            this.$parent.listDatas();
-
-            this.loadIn = false      //隐藏"加载中..."提示
-            this.loadMore = true     //显示"加载更多"提示
-            this.pageNum = false     //是否有更多数据加载
-
-
+      alert(this.scrolly.aspect +'---'+this.scrolly.pageNum )
+      if(this.scrolly.aspect == 1){      //向下滑动加载
+        if(this.scrolly.pageNum == true){  //追加数据
+          this.scrolly.loadMore = false    //隐藏"加载更多"提示
+          this.scrolly.loadIn = true    //显示"加载中..."提示
+          this.scrolly.aspect = 0
+          this.$parent.listDatas();
         }else{
-          this.pageNum = false
-          this.loadMore = false
-          this.loadOff = true
-          this.aspect = 0
+          this.scrolly.pageNum = false
+          this.scrolly.loadMore = false
+          this.scrolly.loadOff = true
+          this.scrolly.aspect = 0
 
         }        
-      }else if(this.aspect == 2){
+      }else if(this.scrolly.aspect == 2){      //向上滑动加载
         this.$parent.listDatas();
-        this.pageNum = false
-        this.loadMore = false
-        this.loadOff = false
-        this.aspect = 0        
+        this.scrolly.pageNum = false
+        this.scrolly.loadMore = false
+        this.scrolly.loadOff = false
+        this.scrolly.aspect = 0        
       }
-      this.loadreFresh = false
+      this.scrolly.loadreFresh = false
     },
     handleScroll () {
       let offsetTop = document.querySelector('.sroll-wrap').scrollTop
