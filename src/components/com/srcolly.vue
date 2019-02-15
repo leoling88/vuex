@@ -19,7 +19,7 @@ var b_h = document.documentElement.scrollHeight || document.body.scrollHeight;
 export default {
   name: 'myScroll',
   props: {
-    scrolly: Array
+    scrolly: Object
   },
   data () {
     return {
@@ -49,6 +49,7 @@ export default {
          
     },
     touchMove(e){ //触摸滑动事件
+      if(!this.scrolly.loadIn){    //如果不在加载中
         if(e.targetTouches[0].pageY > this.pageY){ //向下滑动
           this.loadreFresh = true
           if(this.scrollTop == 0 && e.targetTouches[0].pageY - this.pageY > 80){
@@ -63,29 +64,32 @@ export default {
             this.scrolly.aspect = 1
           }
           console.log("向上滑动" + (this.pageY - e.targetTouches[0].pageY) )
-        }
+        }        
+      }
+
     },
     touchEnd(e){
-      alert(this.scrolly.aspect +'---'+this.scrolly.pageNum )
-      if(this.scrolly.aspect == 1){      //向下滑动加载
-        if(this.scrolly.pageNum == true){  //追加数据
-          this.scrolly.loadMore = false    //隐藏"加载更多"提示
-          this.scrolly.loadIn = true    //显示"加载中..."提示
-          this.scrolly.aspect = 0
+      if(!this.scrolly.loadIn){    //如果不在加载中
+        if(this.scrolly.aspect == 1){      //从下往上滑动加载
+          console.log('====>可以加载' )
+          if(this.scrolly.pageNum == true){  //追加数据
+            this.scrolly.loadMore = false    //隐藏"加载更多"提示
+            this.scrolly.loadIn = true    //显示"加载中..."提示
+            this.scrolly.aspect = 0
+            this.$parent.listDatas();
+          }else{
+            this.scrolly.pageNum = false
+            this.scrolly.loadMore = false
+            this.scrolly.loadOff = true
+            this.scrolly.aspect = 0
+          }        
+        }else if(this.scrolly.aspect == 2){      //到达顶部，从上往下滑动加载
           this.$parent.listDatas();
-        }else{
           this.scrolly.pageNum = false
           this.scrolly.loadMore = false
-          this.scrolly.loadOff = true
-          this.scrolly.aspect = 0
-
-        }        
-      }else if(this.scrolly.aspect == 2){      //向上滑动加载
-        this.$parent.listDatas();
-        this.scrolly.pageNum = false
-        this.scrolly.loadMore = false
-        this.scrolly.loadOff = false
-        this.scrolly.aspect = 0        
+          this.scrolly.loadOff = false
+          this.scrolly.aspect = 0        
+        }
       }
       this.scrolly.loadreFresh = false
     },

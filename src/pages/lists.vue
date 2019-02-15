@@ -50,11 +50,17 @@ export default {
 	methods:{
 		...mapActions(['onTouchStart','onTouchMove','onTouchEnd']),
 		listDatas(){
+			console.log('====>加载中不能重复加载 ' )
 			this.scrollyDatas.pageNum = false
 	        api.requestTestData().then(res => {
 	        	let data = res.data
-	        	this.newsHot = data.listshot2
+	        	data.listshot2.forEach((item) => {
+				   //遍历prodAllPrice这个字段，并累加
+				   this.newsHot.push(item)
+				})
+	        	console.log(this.newsHot )
 	        	this.scrollyDatas.pageNum = true
+	        	this.scrollyDatas.loadIn = false
 	        }).catch((res) => {
 	        });
 
