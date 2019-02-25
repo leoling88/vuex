@@ -27,12 +27,12 @@ export default {
 		return {
 			newsHot:[],
 			scrollyDatas:{
-		      aspect: 0,  //1向上，2向下
-		      loadMore: true,
-		      loadIn:false,
-		      pageNum:true,
-		      loadOff:false,
-		      loadreFresh:false,		      
+		      aspect: 0,          //1向上，2向下
+		      loadMore: true,     //显示加载更多
+		      loadIn:false,       //显示加载中
+		      pageNum:10,       //当前加载页码 
+		      loadOff:false,      //显示无更新数据
+		      loadreFresh:false,  //下拉刷新数据	      
 			}
 
 		}
@@ -51,15 +51,17 @@ export default {
 		...mapActions(['onTouchStart','onTouchMove','onTouchEnd']),
 		listDatas(){
 			console.log('====>加载中不能重复加载 ' )
-			this.scrollyDatas.pageNum = false
+			this.scrollyDatas.loadMore = false
 	        api.requestTestData().then(res => {
 	        	let data = res.data
+	        					   alert(data.listshot2.length)
+
 	        	data.listshot2.forEach((item) => {
 				   //遍历prodAllPrice这个字段，并累加
 				   this.newsHot.push(item)
 				})
 	        	console.log(this.newsHot )
-	        	this.scrollyDatas.pageNum = true
+	        	this.scrollyDatas.loadMore = true
 	        	this.scrollyDatas.loadIn = false
 	        }).catch((res) => {
 	        });

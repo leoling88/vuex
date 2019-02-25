@@ -72,7 +72,7 @@ export default {
       if(!this.scrolly.loadIn){    //如果不在加载中
         if(this.scrolly.aspect == 1){      //从下往上滑动加载
           console.log('====>可以加载' )
-          if(this.scrolly.pageNum == true){  //追加数据
+          if(this.scrolly.loadMore == true){  //追加数据
             this.scrolly.loadMore = false    //隐藏"加载更多"提示
             this.scrolly.loadIn = true    //显示"加载中..."提示
             this.scrolly.aspect = 0
