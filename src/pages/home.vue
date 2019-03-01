@@ -3,17 +3,12 @@
 <!-- 	<v-leftbar :panellist="menulist" ></v-leftbar>
 -->	<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
 		<!--轮播-->
-			<v-swiper :swiperLists = "imgLists" :swinperView="swinper"></v-swiper>
+		<v-swiper :swiperLists = "imgLists" :swinperView="swinper"></v-swiper>
 		<!--轮播 end-->
 		<!--先择框-->
 		<v-select :selectDatas = "select1"  @optionclick="optionClick" @selectshow="selectShow" ></v-select>
 		<!--先择框 end-->
-
-
-
 		<div class="home"  @click="cc">
-
-		
 
 
 	哥是首页
@@ -22,6 +17,7 @@
 
 
 	</div>
+
 		
 
 	<!--弹框-->
@@ -166,7 +162,6 @@
 	    	this.requireSwiperDatas()
 	    	const _this = this
 		    window.onresize = function temp() {
-		    	alert('dd')
 		    	_this.loadups.loading = true
 		    	_this.swinper.viewX = document.body.clientWidth
 		    	console.log('父组件发生变化===>' + _this.swinper.viewX)
@@ -186,7 +181,6 @@
 		        https.getSwiper().then(res => {
 		        	let _data = res.data
 		        	this.imgLists = _data.data
-		        	alert(_data.data[0].imageUrl)
 
 		        	
 
