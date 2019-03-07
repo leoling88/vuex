@@ -58,8 +58,8 @@ export default {
 
 <style>
 
-    #app{width:100%;height:100%; position:absolute;overflow-x:hidden;overflow-y:auto;}
-    .vc-wrap{width:100%;height:100%;position:relative;top:0;left:0;}
+    #app{width:100%;position:absolute;overflow-x:hidden;overflow-y:auto;}
+    .vc-wrap{width:100%;}
 
     .clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}
     .clearfix { *zoom:1; }
@@ -67,7 +67,7 @@ export default {
     .top-0{top:0;}
     .right-0{right:0;}
 
-.content-box{position: absolute;width:100%;height:100%;overflow:hidden;  transition: transform .38s ease-in-out,visibility .38s,-webkit-transform .38s ease-in-out;background:#fff;z-index:1001;}
+.content-box{position: absolute;width:100%;overflow:hidden;  transition: transform .38s ease-in-out,visibility .38s,-webkit-transform .38s ease-in-out;background:#fff;z-index:1001;}
 
     
 </style>

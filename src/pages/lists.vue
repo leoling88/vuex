@@ -1,17 +1,15 @@
 <template>
 <div>
-
-	<v-srcolly :scrolly="scrollyDatas">
+	<v-srcolly :scrolly="scrollyDatas"  >
       <ul slot='lists' class="news-wrap news-list-hot" >
         <li v-for="item in newsHot" :class="{'type-2': item.otype === '3' , 'type-1': item.otype === '1'}">
-            <h2 v-text="item.name"></h2>
+            <a href="http://www.163.com"><h2 v-text="item.name"></h2></a>
             <span class="img" ><img :src="_item" alt="" v-for="_item in item.img"></span>
             <span class="about" v-text="item.text"></span>
         </li>
       </ul>
 	</v-srcolly>
 </div>
-
 
 </template>
 <script>
@@ -27,7 +25,6 @@ export default {
 		return {
 			newsHot:[],
 			scrollyDatas:{
-
 		      aspect: 0,          //1向上，2向下
 		      loadMore: true,     //显示加载更多
 		      loadIn:false,       //显示加载中
@@ -35,7 +32,6 @@ export default {
 		      loadOff:false,      //显示无更新数据
 		      loadreFresh:false,  //下拉刷新数据	      
 			}
-
 		}
 	},
 	created:function() {
@@ -55,15 +51,17 @@ export default {
 			this.scrollyDatas.loadMore = false
 	        api.requestTestData().then(res => {
 	        	let data = res.data
-	        					   alert(data.listshot2.length)
 
 	        	data.listshot2.forEach((item) => {
 				   //遍历prodAllPrice这个字段，并累加
 				   this.newsHot.push(item)
 				})
-	        	console.log(this.newsHot )
 	        	this.scrollyDatas.loadMore = true
 	        	this.scrollyDatas.loadIn = false
+
+
+
+
 	        }).catch((res) => {
 	        });
 
@@ -71,8 +69,8 @@ export default {
 
 
 	},
-  mounted: function (){
-    
+  mounted(){
+  	this.listDatas()
 
 
 
@@ -82,7 +80,7 @@ export default {
 </script>
 <style>
 @import '../../static/style/style.css';
-.news-wrap{width:100%;max-width:20rem;margin:1rem auto;border:1px solid blue;}
+.news-wrap{width:100%;max-width:20rem;margin:1rem auto;}
 .news-list-hot .type-1{position: relative;height:3rem;border-bottom:1px solid #ccc;padding:.5rem;}
 .news-list-hot .type-1 .img{display:block;width:5rem;height:3rem;position: absolute;top:.5rem;left:.5rem;}
 .news-list-hot .type-1 .img img{width:100%;height:100%;}
