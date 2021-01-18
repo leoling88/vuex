@@ -192,7 +192,7 @@
 		},
 	    mounted(){		        	
         	this.selectDatas.scrollTop1 = -(this.selectDatas.hover1 * this.$refs.vernier.offsetHeight + 5)    //默认位置
-        	this.getaddressSQ(18, 0)
+        	//this.getaddressSQ(15, 0)
 	    },
 	    watch:{
 

@@ -3,7 +3,7 @@
 		<div class="swipe-box" :style="{'width':swinperView.ulWidth + 'px','transform': 'translate3d('+swinperView.left +'px, 0, 0)','background':'#000'}">
 			<div class="lists">
 				<ul >
-					<li v-for="(item, index) in swiperLists" :style="{'width':swinperView.width + 'px'}" ><router-link to=""><img :src="item.imageUrl" alt=""/></router-link></li> <!-- @click.stop="clickView(index)">-->
+					<li v-for="(item, index) in swiperLists" :style="{'width':swinperView.width + 'px'}" ><router-link to=""><img :src="item.img" alt=""/></router-link></li> <!-- @click.stop="clickView(index)">-->
 				</ul>
 			</div>
 		</div>
@@ -54,8 +54,7 @@
 					_this.swinperView.width = swinperW
 					_this.swinperView.ulWidth = page * swinperW
 					_this.swinperView.title = _this.swiperLists[0].title
-
-
+					console.log("视图偏移位置"+swinperW)
 					if(direction == 0 ) {
 						if(num < (page - 1)){
 							console.log(num + '--->')
@@ -148,20 +147,20 @@
 <style scoped>
 .swipe-wrap{
 	width:100%;
-	height:200px;
+	height:8rem;
 	position: relative;
 	overflow:hidden;
 	background:#ccc;
 }
 .swipe-box{width:100%;position:absolute;top:0;left:0;transition: transform .38s ease-in-out,visibility .38s,-webkit-transform .38s ease-in-out;}
-.swipe-box .lists li{float:left; height:10rem;}
+.swipe-box .lists li{float:left; height:8rem;}
 .swipe-box .lists li img{width:100%;height:100%;}
 .swipe-box .lists li:nth-child(1){background:red;}
 .swipe-box .lists li:nth-child(2){background:blue;}
 .swipe-box .lists li:nth-child(3){background:green;}
 .swipe-box .lists li:nth-child(4){background:#000;}
-.swipe-wrap .title{position:absolute;height:1.6rem;line-height:1.6rem;bottom:0;left:0; z-index:30;color:#fff;text-indent:1em;}
-.swipe-wrap .page{position:absolute;bottom:.5rem;right:.5rem; }
+.swipe-wrap .title{position:absolute;height:1.6rem;padding-right:3rem;line-height:1.6rem;bottom:0;left:0; z-index:30;color:#fff;text-indent:1em;background:#000;opacity:.6;z-index:999;}
+.swipe-wrap .page{position:absolute;bottom:.5rem;right:.5rem; z-index:1000;}
 .swipe-wrap .page span{display:block;float:left;width:.5rem;height:.5rem;margin:0 1rem 0 0;border-radius:50%;background:#fff;}
 .swipe-wrap .page span:last-child{margin:0;}
 .swipe-wrap .page i{ display:block; width:.6rem;height:.6rem;border-radius:50%;background:red; position:absolute;top:.05rem;left:0;transition: transform .38s ease-in-out,visibility .38s,-webkit-transform .38s ease-in-out;}

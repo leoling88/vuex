@@ -1,7 +1,8 @@
-                                                        <template>
+<template>
 <div>
-<!-- 	<v-leftbar :panellist="menulist" ></v-leftbar>
--->	<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}">
+ 	<v-leftbar :panellist="menulist" ></v-leftbar>
+	<div class="content-box" v-bind:style="{'transform': 'translate3d('+leftbaron.xValueR +'px, 0, 0)'}"></div>
+
 		<!--轮播-->
 		<v-swiper :swiperLists = "imgLists" :swinperView="swinper"></v-swiper>
 		<!--轮播 end-->
@@ -10,14 +11,8 @@
 		<!--先择框 end-->
 		<div class="home"  @click="cc">
 
-
 	哥是首页
 		</div>
-
-
-
-	</div>
-
 		
 
 	<!--弹框-->
@@ -179,10 +174,9 @@
 
 	        requireSwiperDatas () {    
 		        https.getSwiper().then(res => {
-		        	let _data = res.data
-		        	this.imgLists = _data.data
-
-		        	
+		        	let _data = res.data.swiperList
+		        	console.log(_data)
+		        	this.imgLists = _data
 
 		        }).catch((res) => {
 		        });

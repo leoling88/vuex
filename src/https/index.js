@@ -10,16 +10,20 @@ export default {
   getChianAddress() {       //省市、直辖市
     return axios.get('../static/js/chinaAdd3.json')
   },
-
+/*
   getSwiper() {       //省市、直辖市
     return axios.post('http://yxrh.createt.cn:8091/combile/wxInterface/informationBanner/getBannerList')
   },
-
+*/
   /*
   *测试数据*
   */
   requestTestData() {
     return axios.get('../static/js/testData.json')
+  },
+  getSwiper (){
+    return axios.get('../static/js/testData.json')
+
   }
 
 

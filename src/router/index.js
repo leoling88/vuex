@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/pages/home'
 import lists from '@/pages/lists'
+import swipers from '@/pages/swipers'
 Vue.use(Router)
 
 export default new Router({
@@ -16,6 +17,12 @@ export default new Router({
       name: 'lists',
       component: lists
     },
+    {
+      path: '/swipers',
+      name: 'swipers',
+      component: swipers
+    },
+   
     /*
     *下拉先择*
     */

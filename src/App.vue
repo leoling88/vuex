@@ -42,7 +42,11 @@ export default {
         case 'home':
           return "HOME";
         case 'lists':
-          return '列表页'
+          return '列表页';
+        case 'swipers':
+          return '轮播';
+
+
       }
     },
     menuDisplay () {
