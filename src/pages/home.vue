@@ -38,7 +38,7 @@
 	import select from '@/components/com/select'		
 	import {mapState, mapGetters, mapActions} from 'vuex'
     import https from '@/https/index'
-    import echarts from '../../static/js/echarts4.7.0.js'
+    import echarts from '@/assets/js/echarts4.7.0.js'
 
 	export default{
 		name: 'home',
