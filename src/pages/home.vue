@@ -37,7 +37,8 @@
 	import swipers from '@/components/com/swiper'
 	import select from '@/components/com/select'		
 	import {mapState, mapGetters, mapActions} from 'vuex'
-  import https from '@/https/index'
+    import https from '@/https/index'
+    import echarts from '../../static/js/echarts4.7.0.js'
 
 	export default{
 		name: 'home',
