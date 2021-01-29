@@ -32,6 +32,18 @@ export default new Router({
       component: function (resolve) {
         require(['../pages/selects'], resolve);
       },
-    },   
+    }, 
+
+    /*
+    *表*
+    */
+    {
+      path: '/ColumnTable',
+      name: 'ColumnTable',
+      component: function (resolve) {
+        require(['../pages/ColumnTable'], resolve);
+      },
+    },  
+
   ]
 })

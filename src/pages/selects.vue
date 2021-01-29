@@ -28,6 +28,7 @@
 	import address from '@/components/com/selectAddress'		
 	import {mapState, mapGetters, mapActions} from 'vuex'
 	import api from '@/https/index'	
+	
 
 	export default{
 		name: 'selects',
@@ -38,8 +39,8 @@
 
 		},
 		data () {
-			return {
 
+            return {
 				select1:{     //下拉选择1
 					key:1,
 					value:'男',
@@ -145,9 +146,10 @@
 
 	        },
 	        requireAdd3 () {     //获取中国省市区地址表
-		        api.getChianAddress({dataType: "json",}).then(res => {
+
+		        api.getChianAddress({dataType: "json"}).then(res => {
 		        	let data = res.data
-		        	console.log('res')
+		        	//console.log('res')
 		        	this.chinaAdd3list = res.data
 		        	this.select3.lists.list1 = this.chinaAdd3list
 		        	this.select3.lists.list2 = this.select3.lists.list1[18].children

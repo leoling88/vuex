@@ -79,7 +79,7 @@ export default {
 
 </script>
 <style>
-@import '../../static/style/style.css';
+
 .news-wrap{width:100%;max-width:20rem;margin:1rem auto;}
 .news-list-hot .type-1{position: relative;height:3rem;border-bottom:1px solid #ccc;padding:.5rem;}
 .news-list-hot .type-1 .img{display:block;width:5rem;height:3rem;position: absolute;top:.5rem;left:.5rem;}
