@@ -44,6 +44,12 @@ export default new Router({
         require(['../pages/ColumnTable'], resolve);
       },
     },  
-
+    {
+      path: '/01',
+      name: '01',
+      component: function (resolve) {
+        require(['../pages/01'], resolve);
+      },
+    },  
   ]
 })
